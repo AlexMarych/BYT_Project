@@ -2,9 +2,9 @@ namespace BYT_Project_s26850.Models;
 
 public class Test
 {
-    public long id { get; set; }
-    public DateTime createdAt { get; set; }
-    public TimeSpan solvingTime { get; set; }
+    public long Id { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public TimeSpan SolvingTime { get; set; }
     
     public List<Question> Questions { get; set; }
 
