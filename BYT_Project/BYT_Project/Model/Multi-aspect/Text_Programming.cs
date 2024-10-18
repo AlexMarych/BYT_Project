@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BYT_Project.Model
 {
-    internal class Text
+    public class Text_Programming : Programming
     {
     }
 }

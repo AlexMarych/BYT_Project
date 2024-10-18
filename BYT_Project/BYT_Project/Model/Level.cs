@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace BYT_Project.Model
 {
-    internal class Level
+    public class Level
     {
+        public long Id {get; set;}
+        public enum Name
+        {
+            Beginner,
+            Intermidiate,
+            Advanced
+        }
+        public List<Course>? Courses {get; set;}
     }
 }

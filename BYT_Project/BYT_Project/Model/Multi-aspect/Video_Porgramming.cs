@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BYT_Project.Model
 {
-    internal class Video
+    public class Video_Porgramming : Programming
     {
+
     }
 }

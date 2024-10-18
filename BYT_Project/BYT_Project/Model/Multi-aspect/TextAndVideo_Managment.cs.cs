@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BYT_Project.Model
 {
-    internal class TextAndVideo_Managment
+    internal class TextAndVideo_Managment : Managment
     {
     }
 }
