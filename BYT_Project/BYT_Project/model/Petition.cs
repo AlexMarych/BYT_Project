@@ -1,4 +1,4 @@
-﻿namespace BYT_Project.model
+﻿namespace BYT_Project.Model
 {
     public class Petition
     {
