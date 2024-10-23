@@ -11,9 +11,8 @@ namespace BYT_Project.Model
         public int Price { get; set; }
         public static float MinScore = 0.5f;
 
-        protected Course(long id, string name, int price, IDictionary<string, Mentor>? mentors, Level level, List<Question>? questions)
+        protected Course(string name, int price, IDictionary<string, Mentor>? mentors, Level level, List<Question>? questions)
         {
-            Id = id;
             Name = name;
             Price = price;
             Mentors = mentors;
@@ -27,6 +26,9 @@ namespace BYT_Project.Model
 
         public List<Question>? Questions { get; set; }
 
-        
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name: {Name}, Price: {Price}";
+        }
     }
 }

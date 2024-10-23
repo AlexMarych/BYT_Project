@@ -20,4 +20,9 @@ public class Test
 
         ExtentManager.SaveExtent(_extent);
     }
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, CreatedAt: {CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")}, SolvingTime: {SolvingTime}";
+    }
 }

@@ -13,7 +13,6 @@ namespace BYT_Project.Model
         public string Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; }
-        private static List<Person> _extent = [];
 
         protected Person(string name, string surname, DateTime dateOfBirth, DateTime createdAt)
         {
@@ -21,9 +20,11 @@ namespace BYT_Project.Model
             Surname = surname;
             DateOfBirth = dateOfBirth;
             CreatedAt = createdAt;
+        }
 
-            _extent.Add(this);
-            ExtentManager.SaveExtent(_extent);
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name: {Name}, Surname: {Surname}, DateOfBirth: {DateOfBirth.ToString("yyyy-MM-dd")}, CreatedAt: {CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")}";
         }
     }
 }

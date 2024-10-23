@@ -6,14 +6,13 @@ public class Payment
     public bool IsSucceed { get; set; }
     public DateTime PaymentDate { get; set; }
     
-    public required Student Student { get; set; }
-    public required Course Course { get; set; }
+    public Student Student { get; set; }
+    public Course Course { get; set; }
 
     private static List<Payment> _extent = [];
 
-    public Payment(long transactionId, bool isSucceed, DateTime paymentDate, Student student, Course course)
+    public Payment(bool isSucceed, DateTime paymentDate, Student student, Course course)
     {
-        TransactionId = transactionId;
         IsSucceed = isSucceed;
         PaymentDate = paymentDate;
         Student = student;
@@ -22,5 +21,10 @@ public class Payment
         _extent.Add(this);
 
         ExtentManager.SaveExtent(_extent);
+    }
+
+    public override string ToString()
+    {
+        return $"TransactionId: {TransactionId}, IsSucceed: {IsSucceed}, PaymentDate: {PaymentDate}";
     }
 }
