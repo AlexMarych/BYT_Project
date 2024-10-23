@@ -8,5 +8,12 @@ namespace BYT_Project.Model
 {
     internal class Video_Managment : Managment
     {
+        private static List<Video_Managment> _extent = [];
+        public Video_Managment(long id, string name, int price, IDictionary<string, Mentor>? mentors, Level level, List<Question>? questions) : base(id, name, price, mentors, level, questions)
+        {
+            _extent.Add(this);
+
+            ExtentManager.SaveExtent(_extent);
+        }
     }
 }

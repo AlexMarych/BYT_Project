@@ -7,9 +7,15 @@ public class Question
     public string Answer { get; set;  }
     public List<string> PossibleAnswers { get; set; }
 
+    private static List<Question> _extent = [];
+
     public Question()
     {
         PossibleAnswers = [];
+
+        _extent.Add(this);
+
+        ExtentManager.SaveExtent(_extent);
     }
     
 }

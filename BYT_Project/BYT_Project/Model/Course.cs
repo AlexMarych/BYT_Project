@@ -7,6 +7,16 @@
         public int Price { get; set; }
         public static float MinScore = 0.5f;
 
+        protected Course(long id, string name, int price, IDictionary<string, Mentor>? mentors, Level level, List<Question>? questions)
+        {
+            Id = id;
+            Name = name;
+            Price = price;
+            Mentors = mentors;
+            Level = level;
+            Questions = questions;
+        }
+
         public IDictionary<string, Mentor>? Mentors { get; set; }
 
         public required Level Level { get; set; }
