@@ -15,5 +15,9 @@ public class Test
         CreatedAt = createdAt;
         SolvingTime = solvingTime;
         Questions = questions;
+
+        _extent.Add(this);
+
+        ExtentManager.SaveExtent(_extent);
     }
 }

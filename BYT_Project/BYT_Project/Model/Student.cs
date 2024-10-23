@@ -1,4 +1,4 @@
-﻿namespace BYT_Project.Model
+namespace BYT_Project.Model
 {
     public class Student : Person
     {
