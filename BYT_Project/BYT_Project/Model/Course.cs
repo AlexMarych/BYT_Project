@@ -1,8 +1,12 @@
-﻿namespace BYT_Project.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BYT_Project.Model
 {
     public abstract class Course
     {
         public long Id { get; }
+
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
         public int Price { get; set; }
         public static float MinScore = 0.5f;
@@ -19,7 +23,7 @@
 
         public IDictionary<string, Mentor>? Mentors { get; set; }
 
-        public required Level Level { get; set; }
+        public  Level Level { get; set; }
 
         public List<Question>? Questions { get; set; }
 

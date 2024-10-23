@@ -7,7 +7,7 @@ namespace BYT_Project.Model
         {
         }
 
-        public required string Specialization { get; set; }
+        public  string Specialization { get; set; }
         public Mentor? Chief { get; set; }
         public List<Course>? Courses { get; set; }
 

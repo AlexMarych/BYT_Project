@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
     public class Employee : Person
     {
         public int Salary { get; set; }
+        [Required(AllowEmptyStrings = false)]
         public string Experience { get; set; }
         public DateTime DateOfEmployment { get; set; }
 
