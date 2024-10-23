@@ -12,5 +12,7 @@
         public required Level Level { get; set; }
 
         public List<Question>? Questions { get; set; }
+
+        
     }
 }
