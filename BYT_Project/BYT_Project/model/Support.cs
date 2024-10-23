@@ -10,5 +10,10 @@
             _extent.Add(this);
             ExtentManager.SaveExtent(_extent);
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

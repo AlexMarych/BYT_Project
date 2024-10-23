@@ -9,14 +9,13 @@ public class Question
     public string Text { get; set; }
 
     [Required(AllowEmptyStrings = false)]
-    public string Answer { get; set;  }
-    public List<string>? PossibleAnswers { get; set; }
+    public string Answer { get; set; }
+    public List<string> PossibleAnswers { get; set; }
 
     private static List<Question> _extent = [];
 
-    public Question(long id, string text, string answer, List<string>? possibleAnswers)
+    public Question(string text, string answer, List<string>? possibleAnswers)
     {
-        Id = id;
         Text = text;
         Answer = answer;
         PossibleAnswers = possibleAnswers;
@@ -24,5 +23,10 @@ public class Question
         _extent.Add(this);
 
         ExtentManager.SaveExtent(_extent);
+    }
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, Text: {Text}, Answer: {Answer}, PossibleAnswers: {PossibleAnswers}";
     }
 }
