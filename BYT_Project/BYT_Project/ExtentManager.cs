@@ -8,14 +8,24 @@ namespace BYT_Project
 
         public static void SaveExtent<T>(List<T> extent)
         {
-            if (extent is null)
+            if (extent is null || extent.Count == 0)
                 return;
 
             var employeeExtentString = JsonConvert.SerializeObject(extent);
 
             var path = Path.Combine(FULL_PATH, $"{extent[0].GetType()}.json");
 
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+            }
+            catch(NullReferenceException)
+            {
+                Console.WriteLine("directory dosn't exist");
+                return;
+            }
+
+            
 
             using (FileStream fs = File.Create(path))
             {
