@@ -3,7 +3,7 @@ using BYT_Project.Model;
 namespace BYT_Project_UnitTests;
 
 
-public class Tests
+public class EmployeeTest
 {
     
     Employee employee = new Support(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
