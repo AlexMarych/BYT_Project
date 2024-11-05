@@ -11,12 +11,10 @@ namespace BYT_Project_UnitTests
     internal class CourseTest
     {
         static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
-        
+
         static List<Question> questions = new List<Question>();
 
-        static Level level = new Level(Level.Name.Advanced);
-
-        Course course = new Managment("name",20000, role, level , questions);
+        Course course = new Managment("name", 20000, role, Course.Level.Advanced, questions);
 
         [Test]
         public void CourseDataValidationTest_Name()
@@ -39,7 +37,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void CourseDataValidationTest_Level()
         {
-            Assert.IsInstanceOf<Level>(course.Level);
+            Assert.IsInstanceOf<Course.Level>(course.level);
         }
 
         [Test]

@@ -9,6 +9,14 @@ namespace BYT_Project.Model
 
         [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
+        public enum Level
+        {
+            Beginner,
+            Intermidiate,
+            Advanced
+        }
+
+        public Level level { get; set; }
         public int Price { get; set; }
         public static float MinScore = 0.5f;
 
@@ -17,13 +25,11 @@ namespace BYT_Project.Model
             Name = name;
             Price = price;
             Mentors = mentors;
-            Level = level;
+            this.level = level;
             Questions = questions;
         }
 
         public IDictionary<string, Mentor>? Mentors { get; set; }
-
-        public  Level Level { get; set; }
 
         public List<Question>? Questions { get; set; }
 

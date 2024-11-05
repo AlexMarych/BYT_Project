@@ -1,8 +1,6 @@
 ﻿using BYT_Project;
 using BYT_Project.Model;
-using static BYT_Project.Model.Level;
 
-//var level = new Level(Name.Beginner);
 //var question = new Question("aaa", "dada", ["lol", "idj"]);
 //var question1 = new Question("aaa", "dada", ["lol", "lmao"]);
 //var test = new Test(DateTime.Now, new TimeSpan(3, 4, 5), [question, question1]);
