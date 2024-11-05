@@ -1,5 +1,6 @@
 namespace BYT_Project.Model;
 
+[Serializable]
 public class Payment
 {
     public long TransactionId { get; set; }
@@ -19,8 +20,6 @@ public class Payment
         Course = course;
 
         _extent.Add(this);
-
-        ExtentManager.SaveExtent(_extent);
     }
 
     public override string ToString()

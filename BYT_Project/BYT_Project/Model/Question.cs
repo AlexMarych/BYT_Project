@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model;
 
+[Serializable]
 public class Question
 {
     public long Id { get; set; }
@@ -21,8 +22,6 @@ public class Question
         PossibleAnswers = possibleAnswers;
 
         _extent.Add(this);
-
-        ExtentManager.SaveExtent(_extent);
     }
 
     public override string ToString()

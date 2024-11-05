@@ -2,6 +2,7 @@
 
 namespace BYT_Project.Model
 {
+    [Serializable]
     public abstract class Course
     {
         public long Id { get; }

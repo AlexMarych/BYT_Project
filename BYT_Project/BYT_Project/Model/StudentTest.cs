@@ -1,5 +1,6 @@
 namespace BYT_Project.Model;
 
+[Serializable]
 public class StudentTest
 {
     public Student Student { get; set; }
@@ -15,7 +16,5 @@ public class StudentTest
         Grade = grade;
 
         _extent.Add(this);
-
-        ExtentManager.SaveExtent(_extent);
     }
 }

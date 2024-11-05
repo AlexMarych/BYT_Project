@@ -2,6 +2,7 @@
 
 namespace BYT_Project.Model
 {
+    [Serializable]
     public class Petition
     {
         public long Id { get; set; }
@@ -23,7 +24,6 @@ namespace BYT_Project.Model
             Status = status;
 
             _extent.Add(this);
-            ExtentManager.SaveExtent(_extent);
         }
 
         public override string ToString()

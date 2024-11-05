@@ -2,17 +2,21 @@
 using BYT_Project.Model;
 using static BYT_Project.Model.Level;
 
-var level = new Level(Name.Beginner);
-var question = new Question("aaa", "dada", ["lol", "idj"]);
-var question1 = new Question("aaa", "dada", ["lol", "lmao"]);
-var test = new Test(DateTime.Now, new TimeSpan(3, 4, 5), [question, question1]);
+//var level = new Level(Name.Beginner);
+//var question = new Question("aaa", "dada", ["lol", "idj"]);
+//var question1 = new Question("aaa", "dada", ["lol", "lmao"]);
+//var test = new Test(DateTime.Now, new TimeSpan(3, 4, 5), [question, question1]);
 var student = new Student("BBBBBBBBB", "sadfad", DateTime.Now, DateTime.Now, 44, 6);
-var support = new Support(10, "aadad", DateTime.Now, "oao", "sadfad", DateTime.Now, DateTime.Now);
-var mentor = new Mentor(10, "ADADADA", DateTime.Now, "oao", "sadfad", DateTime.Now, DateTime.Now, "XDD");
-var petition = new Petition("lol", Petition.StatusType.Closed);
-var payment = new Payment(true, DateTime.Now, student, null);
+//var support = new Support(10, "aadad", DateTime.Now, "oao", "sadfad", DateTime.Now, DateTime.Now);
+//var mentor = new Mentor(10, "ADADADA", DateTime.Now, "oao", "sadfad", DateTime.Now, DateTime.Now, "XDD");
+//var petition = new Petition("lol", Petition.StatusType.Closed);
+//var payment = new Payment(true, DateTime.Now, student, null);
 
 
-ExtentManager.ReadExtent<Level>();
 ExtentManager.ReadExtent<Student>();
-ExtentManager.ReadExtent<Mentor>();
+student.Surname = "yeban";
+ExtentManager.ReadExtent<Student>();
+//Student._extent.ForEach(x => Console.WriteLine("here" + x.ToString()));
+//ExtentManager.ReadExtent<Student>();
+//ExtentManager.ReadExtent<Student>();
+//ExtentManager.ReadExtent<Mentor>();

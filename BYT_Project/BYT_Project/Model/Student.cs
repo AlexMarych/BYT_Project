@@ -19,7 +19,6 @@ namespace BYT_Project.Model
             Gpa = gpa;
 
             _extent.Add(this);
-            ExtentManager.SaveExtent(_extent);
         }
 
         public override string ToString()
