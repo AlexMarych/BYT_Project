@@ -1,5 +1,4 @@
-﻿
-using BYT_Project.Utils;
+﻿using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -12,6 +11,11 @@ namespace BYT_Project.Model
 
         private static List<Text_Programming> _extent = [];
 
+        static Text_Programming()
+        {
+            _extent = ExtentManager.LoadExtent<Text_Programming>();
+        }
+
         public Text_Programming(string content, TimeSpan familiarizationTime, string technologyName, List<string> frameworkList, string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel level, List<Test>? questions) : base(technologyName, frameworkList, name, price, mentors, level, questions)
         {
             Content = content;
@@ -20,6 +24,8 @@ namespace BYT_Project.Model
             CutsomValidator.Validate(this);
 
             _extent.Add(this);
+            ExtentManager.ClearExtent<Text_Programming>();
+            ExtentManager.SaveExtent(_extent);
         }
     }
 }

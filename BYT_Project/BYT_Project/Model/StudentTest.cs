@@ -17,6 +17,11 @@ public class StudentTest
 
     private static List<StudentTest> _extent = [];
 
+    static StudentTest()
+    {
+        _extent = ExtentManager.LoadExtent<StudentTest>();
+    }
+
     public StudentTest(Student student, Test test, int grade)
     {
         Student = student;
@@ -26,5 +31,7 @@ public class StudentTest
         CutsomValidator.Validate(this);
 
         _extent.Add(this);
+        ExtentManager.ClearExtent<StudentTest>();
+        ExtentManager.SaveExtent(_extent);
     }
 }

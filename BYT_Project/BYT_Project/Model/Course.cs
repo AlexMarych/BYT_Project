@@ -1,5 +1,4 @@
-﻿using BYT_Project.Utils;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
@@ -24,7 +23,9 @@ namespace BYT_Project.Model
         [Range(0, int.MaxValue)]
         public int Price { get; set; }
         public static float MinScore = 0.5f;
+        public IDictionary<string, Mentor>? Mentors { get; set; }
 
+        public List<Test>? Tests { get; set; }
         protected Course(string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel difficulty, List<Test>? tests)
         {
             Name = name;
@@ -33,10 +34,6 @@ namespace BYT_Project.Model
             Level = difficulty;
             Tests = tests;
         }
-
-        public IDictionary<string, Mentor>? Mentors { get; set; }
-
-        public List<Test>? Tests { get; set; }
 
         public override string ToString()
         {

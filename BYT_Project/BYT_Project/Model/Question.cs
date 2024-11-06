@@ -17,6 +17,11 @@ public class Question
 
     private static List<Question> _extent = [];
 
+    static Question()
+    {
+        _extent = ExtentManager.LoadExtent<Question>();
+    }
+
     public Question(string text, string answer, List<string>? possibleAnswers)
     {
         Text = text;
@@ -26,6 +31,8 @@ public class Question
         CutsomValidator.Validate(this);
 
         _extent.Add(this);
+        ExtentManager.ClearExtent<Question>();
+        ExtentManager.SaveExtent(_extent);
     }
 
     public override string ToString()

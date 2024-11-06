@@ -1,5 +1,4 @@
-﻿
-using BYT_Project.Utils;
+﻿using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -18,8 +17,13 @@ namespace BYT_Project.Model
 
         [Required]
         public Level level { get; set; }
-        
+
         private static List<Managment> _extent = [];
+
+        static Managment()
+        {
+            _extent = ExtentManager.LoadExtent<Managment>();
+        }
 
         public Managment(string field, Level level, string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel difficultyLevel, List<Test>? tests) : base(name, price, mentors, difficultyLevel, tests)
         {
@@ -27,8 +31,8 @@ namespace BYT_Project.Model
             this.level = level;
 
             _extent.Add(this);
+            ExtentManager.ClearExtent<Managment>();
+            ExtentManager.SaveExtent(_extent);
         }
-
-
     }
 }

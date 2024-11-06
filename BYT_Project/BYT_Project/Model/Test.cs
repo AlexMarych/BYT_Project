@@ -1,4 +1,5 @@
 using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model;
 
@@ -9,9 +10,15 @@ public class Test
     public DateTime CreatedAt { get; set; }
     public TimeSpan SolvingTime { get; set; }
 
+    [MaxLength(2)]
     public List<Question> Questions { get; set; } = [];
 
     private static List<Test> _extent = [];
+
+    static Test()
+    {
+        _extent = ExtentManager.LoadExtent<Test>();
+    }
 
     public Test(DateTime createdAt, TimeSpan solvingTime, List<Question> questions)
     {
@@ -22,6 +29,8 @@ public class Test
         CutsomValidator.Validate(this);
 
         _extent.Add(this);
+        ExtentManager.ClearExtent<Test>();
+        ExtentManager.SaveExtent(_extent);
     }
 
     public override string ToString()

@@ -1,5 +1,4 @@
-﻿
-using BYT_Project.Utils;
+﻿using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -13,6 +12,11 @@ namespace BYT_Project.Model
 
         private static List<Video_Porgramming> _extent = [];
 
+        static Video_Porgramming()
+        {
+            _extent = ExtentManager.LoadExtent<Video_Porgramming>();
+        }
+
         public Video_Porgramming(TimeSpan overallDuration, int videosNumber, string technologyName, List<string> frameworkList, string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel level, List<Test>? questions) : base(technologyName, frameworkList, name, price, mentors, level, questions)
         {
             OverallDuration = overallDuration;
@@ -21,6 +25,8 @@ namespace BYT_Project.Model
             CutsomValidator.Validate(this);
 
             _extent.Add(this);
+            ExtentManager.ClearExtent<Video_Porgramming>();
+            ExtentManager.SaveExtent(_extent);
         }
     }
 }

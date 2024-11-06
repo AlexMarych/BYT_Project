@@ -19,6 +19,11 @@ namespace BYT_Project.Model
         public StatusType Status { get; set; }
         private static List<Petition> _extent = [];
 
+        static Petition()
+        {
+            _extent = ExtentManager.LoadExtent<Petition>();
+        }
+
         public Petition(string text, StatusType status)
         {
             Text = text;
@@ -27,6 +32,8 @@ namespace BYT_Project.Model
             CutsomValidator.Validate(this);
 
             _extent.Add(this);
+            ExtentManager.ClearExtent<Petition>();
+            ExtentManager.SaveExtent(_extent);
         }
 
         public override string ToString()
