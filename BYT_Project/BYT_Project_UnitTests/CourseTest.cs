@@ -14,19 +14,25 @@ namespace BYT_Project_UnitTests
 
         static List<Test>? questions = new List<Test>();
 
-        Course course = new Managment("name", 20000, role, Course.DifficultyLevel.Advanced, questions);
+        private static Managment.Level level;
+        private static Course.DifficultyLevel difficultyLevel;
 
+        Course course = new Managment("middle", level, "Mike", 10000, role, difficultyLevel, questions );
+        
+        
         [Test]
         public void CourseDataValidationTest_Name()
         {
             Assert.IsInstanceOf<string>(course.Name);
         }
+        
 
         [Test]
         public void CourseDataValidationTest_Price()
         {
             Assert.IsInstanceOf<int>(course.Price);
         }
+        
 
         [Test]
         public void CourseDataValidationTest_Mentors()
@@ -35,7 +41,7 @@ namespace BYT_Project_UnitTests
         }
 
         [Test]
-        public void CourseDataValidationTest_Level()
+        public void CourseDataValidationTest_DifficultyLevel()
         {
             Assert.IsInstanceOf<Course.DifficultyLevel>(course.Level);
         }
