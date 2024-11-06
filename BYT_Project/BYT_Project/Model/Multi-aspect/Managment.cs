@@ -26,8 +26,6 @@ namespace BYT_Project.Model
             Field = field;
             this.level = level;
 
-            CutsomValidator.Validate(this);
-
             _extent.Add(this);
         }
 

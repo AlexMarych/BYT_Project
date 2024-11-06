@@ -1,5 +1,4 @@
-﻿
-using BYT_Project.Utils;
+﻿using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -15,8 +14,6 @@ namespace BYT_Project.Model
         {
             TechnologyName = technologyName;
             FrameworksList = frameworkList;
-
-            CutsomValidator.Validate(this);
 
             _extent.Add(this);
         }

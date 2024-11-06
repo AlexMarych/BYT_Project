@@ -23,8 +23,6 @@ namespace BYT_Project.Model
             Surname = surname;
             DateOfBirth = dateOfBirth;
             CreatedAt = createdAt;
-
-            CutsomValidator.Validate(this);
         }
 
         public override string ToString()

@@ -11,7 +11,7 @@ namespace BYT_Project.Model
         [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
 
-        public enum DifficultyLevel
+        public enum DifficultyLevel 
         {
             Beginner,
             Intermidiate,
@@ -32,8 +32,6 @@ namespace BYT_Project.Model
             Mentors = mentors;
             Level = difficulty;
             Tests = tests;
-
-            CutsomValidator.Validate(this);
         }
 
         public IDictionary<string, Mentor>? Mentors { get; set; }

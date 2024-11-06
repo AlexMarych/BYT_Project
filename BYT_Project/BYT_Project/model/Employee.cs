@@ -19,8 +19,6 @@ namespace BYT_Project.Model
             Salary = salary;
             Experience = experience;
             DateOfEmployment = dateOfEmployment;
-
-            CutsomValidator.Validate(this);
         }
 
         public override string ToString()
