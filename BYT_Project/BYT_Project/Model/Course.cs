@@ -9,29 +9,29 @@ namespace BYT_Project.Model
 
         [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
-        public enum Level
+        public enum DifficultyLevel
         {
             Beginner,
             Intermidiate,
             Advanced
         }
 
-        public Level level { get; set; }
+        public DifficultyLevel Level { get; set; }
         public int Price { get; set; }
         public static float MinScore = 0.5f;
 
-        protected Course(string name, int price, IDictionary<string, Mentor>? mentors, Level level, List<Question>? questions)
+        protected Course(string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel difficulty, List<Test>? tests)
         {
             Name = name;
             Price = price;
             Mentors = mentors;
-            this.level = level;
-            Questions = questions;
+            Level = difficulty;
+            Tests = tests;
         }
 
         public IDictionary<string, Mentor>? Mentors { get; set; }
 
-        public List<Question>? Questions { get; set; }
+        public List<Test>? Tests { get; set; }
 
         public override string ToString()
         {

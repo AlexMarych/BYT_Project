@@ -3,11 +3,9 @@
     public class Video_Porgramming : Programming
     {
         private static List<Video_Porgramming> _extent = [];
-        public Video_Porgramming(string name, int price, IDictionary<string, Mentor>? mentors, Level level, List<Question>? questions) : base(name, price, mentors, level, questions)
+        public Video_Porgramming(string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel level, List<Test>? tests) : base(name, price, mentors, level, tests)
         {
             _extent.Add(this);
-
-            ExtentManager.SaveExtent(_extent);
         }
     }
 }
