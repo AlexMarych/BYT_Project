@@ -16,7 +16,7 @@ public class TestClassTest
     [Test]
     public void TestDataValidation_SolvingTime()
     {
-        Assert.IsInstanceOf<DateTime>(test.SolvingTime);
+        Assert.IsInstanceOf<TimeSpan>(test.SolvingTime);
     }
     
     [Test]

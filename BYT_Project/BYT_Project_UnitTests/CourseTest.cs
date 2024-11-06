@@ -12,7 +12,7 @@ namespace BYT_Project_UnitTests
     {
         static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
 
-        static List<Question> questions = new List<Question>();
+        static List<Test>? questions = new List<Test>();
 
         Course course = new Managment("name", 20000, role, Course.DifficultyLevel.Advanced, questions);
 
@@ -43,7 +43,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void CourseDataValidationTest_Questions()
         {
-            Assert.IsInstanceOf<List<Question>>(course.Tests);
+            Assert.IsInstanceOf<List<Test>>(course.Tests);
         }
     }
 }
