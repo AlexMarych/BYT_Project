@@ -1,3 +1,4 @@
+using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -17,6 +18,8 @@ namespace BYT_Project.Model
         {
             Balance = balance;
             Gpa = gpa;
+
+            CutsomValidator.Validate(this);
 
             _extent.Add(this);
         }

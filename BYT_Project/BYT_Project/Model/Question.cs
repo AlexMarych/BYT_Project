@@ -1,3 +1,4 @@
+using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model;
@@ -6,6 +7,7 @@ namespace BYT_Project.Model;
 public class Question
 {
     public long Id { get; set; }
+
     [Required(AllowEmptyStrings = false)]
     public string Text { get; set; }
 
@@ -20,6 +22,8 @@ public class Question
         Text = text;
         Answer = answer;
         PossibleAnswers = possibleAnswers;
+
+        CutsomValidator.Validate(this);
 
         _extent.Add(this);
     }

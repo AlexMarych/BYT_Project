@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
@@ -9,14 +10,18 @@ namespace BYT_Project.Model
 
         [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
-        public enum DifficultyLevel
+
+        public enum DifficultyLevel 
         {
             Beginner,
             Intermidiate,
             Advanced
         }
 
+        [Required]
         public DifficultyLevel Level { get; set; }
+
+        [Range(0, int.MaxValue)]
         public int Price { get; set; }
         public static float MinScore = 0.5f;
 

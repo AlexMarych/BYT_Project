@@ -1,3 +1,5 @@
+using BYT_Project.Utils;
+
 namespace BYT_Project.Model;
 
 [Serializable]
@@ -16,6 +18,8 @@ public class Test
         CreatedAt = createdAt;
         SolvingTime = solvingTime;
         Questions = questions;
+
+        CutsomValidator.Validate(this);
 
         _extent.Add(this);
     }

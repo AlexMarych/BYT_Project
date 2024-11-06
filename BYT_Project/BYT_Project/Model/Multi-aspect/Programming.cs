@@ -1,4 +1,4 @@
-﻿
+﻿using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -12,8 +12,9 @@ namespace BYT_Project.Model
         private static List<Programming> _extent = [];
         public Programming(string technologyName, List<string> frameworkList, string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel level, List<Test>? questions) : base(name, price, mentors, level, questions)
         {
-            this.TechnologyName = technologyName;
-            this.FrameworksList = frameworkList;
+            TechnologyName = technologyName;
+            FrameworksList = frameworkList;
+
             _extent.Add(this);
         }
     }

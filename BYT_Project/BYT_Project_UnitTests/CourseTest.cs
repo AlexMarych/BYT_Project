@@ -1,9 +1,6 @@
 ﻿using BYT_Project.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static BYT_Project.Model.Course;
+using static BYT_Project.Model.Managment;
 
 namespace BYT_Project_UnitTests
 {
@@ -12,27 +9,27 @@ namespace BYT_Project_UnitTests
     {
         static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
 
-        static List<Test>? questions = new List<Test>();
+        static List<Test>? tests = new List<Test>();
 
-        private static Managment.Level level;
-        private static Course.DifficultyLevel difficultyLevel;
+        private static Level level;
+        private static DifficultyLevel difficultyLevel;
 
-        Course course = new Managment("middle", level, "Mike", 10000, role, difficultyLevel, questions );
-        
-        
+        Course course = new Managment("field", level, "middle", 12, role, difficultyLevel, tests);
+
+
         [Test]
         public void CourseDataValidationTest_Name()
         {
             Assert.IsInstanceOf<string>(course.Name);
         }
-        
+
 
         [Test]
         public void CourseDataValidationTest_Price()
         {
             Assert.IsInstanceOf<int>(course.Price);
         }
-        
+
 
         [Test]
         public void CourseDataValidationTest_Mentors()

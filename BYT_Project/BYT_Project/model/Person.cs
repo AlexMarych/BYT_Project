@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
@@ -12,6 +13,7 @@ namespace BYT_Project.Model
 
         [Required(AllowEmptyStrings = false)]
         public string Surname { get; set; }
+
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; }
 
