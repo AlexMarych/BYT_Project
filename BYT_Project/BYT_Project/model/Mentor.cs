@@ -17,5 +17,10 @@ namespace BYT_Project.Model
             _extent.Add(this);
             ExtentManager.SaveExtent(_extent);
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + $"Specialization: {Specialization}";
+        }
     }
 }

@@ -5,12 +5,9 @@ namespace BYT_Project.Model
     {
         private static List<Managment> _extent = [];
 
-        public Managment(long id, string name, int price, IDictionary<string, Mentor>? mentors, Level level, List<Question>? questions) : base(id, name, price, mentors, level, questions)
+        public Managment(string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel level, List<Test>? questions) : base(name, price, mentors, level, questions)
         {
-
             _extent.Add(this);
-
-            ExtentManager.SaveExtent(_extent);
         }
 
 

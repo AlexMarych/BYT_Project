@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BYT_Project
 {
@@ -19,13 +20,12 @@ namespace BYT_Project
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 Console.WriteLine("directory dosn't exist");
                 return;
             }
 
-            
 
             using (FileStream fs = File.Create(path))
             {
@@ -34,6 +34,24 @@ namespace BYT_Project
                     writer.Write(employeeExtentString);
                 }
             }
+        }
+
+        public static void ReadExtent<T>()
+        {
+            var path = Path.Combine(FULL_PATH, $"{typeof(T)}.json");
+
+            if (File.Exists(path))
+            {
+                var file = File.ReadAllText(path);
+                var list = JsonConvert.DeserializeObject<List<T>>(file);
+
+                if (list != null && list.Count > 0)
+                    list.ForEach(x => Console.WriteLine(x));
+                else
+                    Console.WriteLine("No data found in the file.");
+            }
+            else
+                Console.WriteLine("Class extent does not exist.");
         }
     }
 }

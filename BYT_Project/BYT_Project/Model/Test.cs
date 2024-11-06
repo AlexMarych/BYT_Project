@@ -1,5 +1,6 @@
 namespace BYT_Project.Model;
 
+[Serializable]
 public class Test
 {
     public long Id { get; set; }
@@ -17,7 +18,10 @@ public class Test
         Questions = questions;
 
         _extent.Add(this);
+    }
 
-        ExtentManager.SaveExtent(_extent);
+    public override string ToString()
+    {
+        return $"Id: {Id}, CreatedAt: {CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")}, SolvingTime: {SolvingTime}";
     }
 }
