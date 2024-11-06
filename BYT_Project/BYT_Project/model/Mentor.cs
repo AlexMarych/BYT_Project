@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using BYT_Project.Utils;
 
 namespace BYT_Project.Model
 {
@@ -14,8 +15,9 @@ namespace BYT_Project.Model
         {
             Specialization = specialization;
 
+            CutsomValidator.Validate(this);
+
             _extent.Add(this);
-            ExtentManager.SaveExtent(_extent);
         }
 
         public override string ToString()

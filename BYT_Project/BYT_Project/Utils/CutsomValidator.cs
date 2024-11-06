@@ -1,13 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BYT_Project
+namespace BYT_Project.Utils
 {
     public class CutsomValidator
     {
         public static void Validate<T>(T obj)
         {
-            if (obj == null) throw new ArgumentNullException(nameof(obj));
-
             var context = new ValidationContext(obj);
             var validationResults = new List<ValidationResult>();
 

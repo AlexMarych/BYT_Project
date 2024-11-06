@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
@@ -22,6 +23,8 @@ namespace BYT_Project.Model
         {
             Text = text;
             Status = status;
+
+            CutsomValidator.Validate(this);
 
             _extent.Add(this);
         }
