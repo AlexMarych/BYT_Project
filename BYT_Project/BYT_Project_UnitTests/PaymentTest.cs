@@ -8,14 +8,14 @@ public class PaymentTest
         new Student("Mike", "Wazowski", new DateTime(2003, 07, 21), 
             new DateTime(2020, 08, 11), 12000, 4);
     
-    static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
+    private static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
 
-    static List<Test>? questions = new List<Test>();
+    private static List<Test>? questions = new List<Test>();
     
-    private static Managment.Level level;
-    private static Course.DifficultyLevel difficultyLevel;
+    private static Managment.Level level = Managment.Level.Top;
+    private static Course.DifficultyLevel difficultyLevel = Course.DifficultyLevel.Intermidiate;
     
-    private static Course course = new Managment("middle", level, "Mike", 10000, role, difficultyLevel, questions);
+    private static Managment course = new Managment("middle", level, "Mike", 10000, role, difficultyLevel, questions);
 
     private Payment payment = new Payment(new DateTime(2023, 11, 11), student, course);
 

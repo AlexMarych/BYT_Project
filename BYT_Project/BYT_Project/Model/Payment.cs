@@ -15,6 +15,11 @@ public class Payment
 
     private static List<Payment> _extent = [];
 
+    static Payment()
+    {
+        ExtentManager.LoadExtent<Payment>();
+    }
+
     public Payment(DateTime? paymentDate, Student student, Course course)
     {
         PaymentDate = paymentDate;
@@ -24,6 +29,8 @@ public class Payment
         CutsomValidator.Validate(this);
 
         _extent.Add(this);
+        ExtentManager.ClearExtent<Payment>();
+        ExtentManager.SaveExtent(_extent);
     }
 
     public override string ToString()

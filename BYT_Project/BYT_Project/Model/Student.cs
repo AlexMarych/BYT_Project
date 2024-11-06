@@ -14,6 +14,11 @@ namespace BYT_Project.Model
         public List<Course>? Courses { get; set; }
         private static List<Student> _extent = [];
 
+        static Student()
+        {
+            _extent = ExtentManager.LoadExtent<Student>();
+        }
+
         public Student(string name, string surname, DateTime dateOfBirth, DateTime createdAt, int balance, int gpa) : base(name, surname, dateOfBirth, createdAt)
         {
             Balance = balance;
@@ -22,6 +27,8 @@ namespace BYT_Project.Model
             CutsomValidator.Validate(this);
 
             _extent.Add(this);
+            ExtentManager.ClearExtent<Student>();
+            ExtentManager.SaveExtent(_extent);
         }
 
         public override string ToString()

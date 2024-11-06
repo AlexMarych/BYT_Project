@@ -1,5 +1,4 @@
-﻿
-using BYT_Project.Utils;
+﻿using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -12,6 +11,12 @@ namespace BYT_Project.Model
         public int VideosNumber { get; set; }
 
         private static List<Video_Managment> _extent = [];
+
+        static Video_Managment()
+        {
+            _extent = ExtentManager.LoadExtent<Video_Managment>();
+        }
+
         public Video_Managment(TimeSpan overallDuration, int videosNumber, string field, Level level, string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel difficultyLevel, List<Test>? tests) : base(field, level, name, price, mentors, difficultyLevel, tests)
         {
             OverallDuration = overallDuration;
@@ -20,6 +25,8 @@ namespace BYT_Project.Model
             CutsomValidator.Validate(this);
 
             _extent.Add(this);
+            ExtentManager.ClearExtent<Video_Managment>();
+            ExtentManager.SaveExtent(_extent);
         }
     }
 }

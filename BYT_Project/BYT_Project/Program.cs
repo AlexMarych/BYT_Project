@@ -1,20 +1,19 @@
 ﻿using BYT_Project.Model;
-using BYT_Project.Utils;
+using static BYT_Project.Model.Course;
+using static BYT_Project.Model.Managment;
 
-//var question = new Question("aaa", "dada", ["lol", "idj"]);
-//var question1 = new Question("aaa", "dada", ["lol", "lmao"]);
-//var test = new Test(DateTime.Now, new TimeSpan(3, 4, 5), [question, question1]);
-//var student = new Student("BBBBBBBBB", "sadfad", DateTime.Now, DateTime.Now, 44, 6);
-//var support = new Support(10, "aadad", DateTime.Now, "oao", "sadfad", DateTime.Now, DateTime.Now);
-//var mentor = new Mentor(10, "ADADADA", DateTime.Now, "oao", "sadfad", DateTime.Now, DateTime.Now, "");
-//var petition = new Petition("lol", Petition.StatusType.Closed);
-//var payment = new Payment(true, DateTime.Now, student, null);
+Console.WriteLine("Class extents");
 
+Student student =
+    new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
+        new DateTime(2020, 08, 11), 12000, 4);
 
-ExtentManager.ReadExtent<Student>();
-//student.Surname = "yeban";
-//ExtentManager.ReadExtent<Student>();
-//Student._extent.ForEach(x => Console.WriteLine("here" + x.ToString()));
-//ExtentManager.ReadExtent<Student>();
-//ExtentManager.ReadExtent<Student>();
-//ExtentManager.ReadExtent<Mentor>();
+IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
+
+List<Test>? questions = new List<Test>();
+
+Managment.Level level;
+Course.DifficultyLevel difficultyLevel;
+Managment course = new Managment("middle", Managment.Level.Top, "Mike", 10000, role, Course.DifficultyLevel.Intermidiate, questions);
+
+Payment payment = new Payment(new DateTime(2023, 11, 11), student, course);

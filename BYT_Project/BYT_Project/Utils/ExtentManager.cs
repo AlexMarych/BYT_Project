@@ -37,6 +37,16 @@ namespace BYT_Project.Utils
 
         public static void ReadExtent<T>()
         {
+            var list = LoadExtent<T>();
+
+            if (list != null && list.Count > 0)
+                list.ForEach(x => Console.WriteLine(x));
+            else
+                Console.WriteLine($"The class extent is empty.");
+        }
+
+        public static List<T> LoadExtent<T>()
+        {
             var path = Path.Combine(FULL_PATH, $"{typeof(T)}.json");
 
             if (File.Exists(path))
@@ -45,12 +55,20 @@ namespace BYT_Project.Utils
                 var list = JsonConvert.DeserializeObject<List<T>>(file);
 
                 if (list != null && list.Count > 0)
-                    list.ForEach(x => Console.WriteLine(x));
+                    return list;
                 else
-                    Console.WriteLine("No data found in the file.");
+                    return new List<T>();
             }
-            else
-                Console.WriteLine("Class extent does not exist.");
+
+            return new List<T>();
+        }
+
+        public static void ClearExtent<T>()
+        {
+            var path = Path.Combine(FULL_PATH, $"{typeof(T)}.json");
+
+            if (File.Exists(path))
+                File.Delete(path);
         }
     }
 }

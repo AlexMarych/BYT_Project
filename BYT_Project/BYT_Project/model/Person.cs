@@ -1,5 +1,4 @@
-﻿using BYT_Project.Utils;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
