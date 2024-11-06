@@ -1,13 +1,11 @@
 ﻿namespace BYT_Project.Model
 {
-    internal class TextAndVideo_Programming : Programming
+    public class TextAndVideo_Programming : Programming
     {
         private static List<TextAndVideo_Programming> _extent = [];
-        public TextAndVideo_Programming(string name, int price, IDictionary<string, Mentor>? mentors, Level level, List<Question>? questions) : base(name, price, mentors, level, questions)
+        public TextAndVideo_Programming(string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel level, List<Test>? tests) : base(name, price, mentors, level, tests)
         {
             _extent.Add(this);
-
-            ExtentManager.SaveExtent(_extent);
         }
     }
 }
