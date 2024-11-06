@@ -12,7 +12,10 @@ public class PaymentTest
 
     static List<Test>? questions = new List<Test>();
     
-    private static Course course = new Managment("name", 20000, role, Course.DifficultyLevel.Advanced, questions);
+    private static Managment.Level level;
+    private static Course.DifficultyLevel difficultyLevel;
+    
+    private static Course course = new Managment("middle", level, "Mike", 10000, role, difficultyLevel, questions);
 
     private Payment payment = new Payment(new DateTime(2023, 11, 11), student, course);
 
