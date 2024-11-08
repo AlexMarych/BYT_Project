@@ -1,11 +1,5 @@
 ﻿using BYT_Project.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static BYT_Project.Model.Course;
-using static BYT_Project.Model.Managment;
 
 namespace BYT_Project_UnitTests.MultiAspect_Tests
 {
@@ -18,7 +12,7 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests
         private static DifficultyLevel difficultyLevel;
         private static List<string> listOfFrameworks = new();
 
-        Programming programming = new Programming("Java", listOfFrameworks, "middle", 12, role, difficultyLevel, tests);
+        private static Programming programming = new Text_Programming("Java", new(), "fff", listOfFrameworks, "middle", 12, role, difficultyLevel, tests);
 
         [Test]
         public void ProgrammingDataValidationTest_TechnologyName()

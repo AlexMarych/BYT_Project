@@ -11,25 +11,25 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests
 {
     internal class ManagmentTest
     {
-        static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
+        private static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
 
-        static List<Test>? tests = new List<Test>();
+        private static List<Test>? tests = new List<Test>();
 
         private static Level level;
         private static DifficultyLevel difficultyLevel;
 
-        Managment managment = new Managment("field", level, "middle", 12, role, difficultyLevel, tests);
+        private static Managment course = new Text_Managment("field", new(), "ss", level, "middle", 12, role, difficultyLevel, []);
 
         [Test]
         public void ManagmentDataValidationTest_Field()
         {
-            Assert.IsInstanceOf<string>(managment.Field);
+            Assert.IsInstanceOf<string>(course.Field);
         }
 
         [Test]
         public void ManagmentDataValidationTest_Level()
         {
-            Assert.IsInstanceOf<Level>(managment.level);
+            Assert.IsInstanceOf<Level>(course.level);
         }
     }
 }
