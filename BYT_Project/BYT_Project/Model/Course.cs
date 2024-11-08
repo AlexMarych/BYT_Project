@@ -19,7 +19,7 @@ namespace BYT_Project.Model
         }
 
         [Required]
-        public DifficultyLevel Level { get; set; }
+        public DifficultyLevel difficultyLevel { get; set; }
 
         [Range(0, int.MaxValue)]
         public int Price { get; set; }
@@ -30,7 +30,7 @@ namespace BYT_Project.Model
             Name = name;
             Price = price;
             Mentors = mentors;
-            Level = difficulty;
+            difficultyLevel = difficulty;
             Tests = tests;
         }
 
