@@ -6,12 +6,18 @@ namespace BYT_Project.Utils
     {
         private static readonly string FULL_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Resources\ClassExtent\");
 
+        private static JsonSerializerSettings _settings => new()
+        {
+            TypeNameHandling = TypeNameHandling.Auto,
+            Formatting = Formatting.Indented
+        };
+
         public static void SaveExtent<T>(List<T> extent)
         {
             if (extent is null || extent.Count == 0)
                 return;
 
-            var employeeExtentString = JsonConvert.SerializeObject(extent);
+            var employeeExtentString = JsonConvert.SerializeObject(extent, _settings);
 
             var path = Path.Combine(FULL_PATH, $"{extent[0].GetType()}.json");
 
@@ -52,15 +58,13 @@ namespace BYT_Project.Utils
             if (File.Exists(path))
             {
                 var file = File.ReadAllText(path);
-                var list = JsonConvert.DeserializeObject<List<T>>(file);
+                var list = JsonConvert.DeserializeObject<List<T>>(file, _settings);
 
                 if (list != null && list.Count > 0)
                     return list;
-                else
-                    return new List<T>();
             }
 
-            return new List<T>();
+            return [];
         }
 
         public static void ClearExtent<T>()

@@ -14,7 +14,7 @@ namespace BYT_Project_UnitTests
         private static Level level;
         private static DifficultyLevel difficultyLevel;
 
-        Course course = new Managment("field", level, "middle", 12, role, difficultyLevel, tests);
+        private static Course course = new Text_Managment("field", new(), "ss", level, "middle", 12, role, difficultyLevel, tests);
 
 
         [Test]

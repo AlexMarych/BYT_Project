@@ -15,7 +15,7 @@ public class PaymentTest
     private static Managment.Level level = Managment.Level.Top;
     private static Course.DifficultyLevel difficultyLevel = Course.DifficultyLevel.Intermidiate;
     
-    private static Managment course = new Managment("middle", level, "Mike", 10000, role, difficultyLevel, questions);
+    private static Course course = new Text_Managment("field", new(), "ss", level, "middle", 12, role, difficultyLevel, []);
 
     private Payment payment = new Payment(new DateTime(2023, 11, 11), student, course);
 
