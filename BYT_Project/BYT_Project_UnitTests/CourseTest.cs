@@ -40,7 +40,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void CourseDataValidationTest_DifficultyLevel()
         {
-            Assert.IsInstanceOf<Course.DifficultyLevel>(course.Level);
+            Assert.IsInstanceOf<Course.DifficultyLevel>(course.difficultyLevel);
         }
 
         [Test]

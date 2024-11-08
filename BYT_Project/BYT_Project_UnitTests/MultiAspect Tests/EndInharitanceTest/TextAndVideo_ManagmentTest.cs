@@ -44,5 +44,17 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         {
             Assert.IsInstanceOf<int>(textAndVideo_Managment.VideosNumber);
         }
+
+        [Test]
+        public void ManagmentDataValidationTest_Field()
+        {
+            Assert.IsInstanceOf<string>(textAndVideo_Managment.Field);
+        }
+
+        [Test]
+        public void ManagmentDataValidationTest_Level()
+        {
+            Assert.IsInstanceOf<Level>(textAndVideo_Managment.level);
+        }
     }
 }
