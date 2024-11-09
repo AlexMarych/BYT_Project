@@ -17,7 +17,6 @@ namespace BYT_Project.Model
             Advanced
         }
 
-        [Required]
         public DifficultyLevel difficultyLevel { get; set; }
 
         [Range(0, int.MaxValue)]

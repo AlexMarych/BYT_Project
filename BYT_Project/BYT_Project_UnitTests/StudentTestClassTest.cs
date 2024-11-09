@@ -1,4 +1,6 @@
 using BYT_Project.Model;
+using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project_UnitTests;
 
@@ -24,5 +26,25 @@ public class StudentTestClassTest
     public void StudentTestDataValidationTest_Grade()
     {
         Assert.IsInstanceOf<int>(studentTest.Grade);
+    }
+
+    [Test]
+    public void StudentRangeValidationTest_Grade()
+    {
+        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+             new BYT_Project.Model.StudentTest(student, test, 6)));
+    }
+
+    [Test]
+    public void StudentRequiredValidationTest_Student()
+    {
+        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            new BYT_Project.Model.StudentTest(null, test, 3)));
+    }
+    [Test]
+    public void StudentRequiredValidationTest_Test()
+    {
+        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            new BYT_Project.Model.StudentTest(student, null, 3)));
     }
 }

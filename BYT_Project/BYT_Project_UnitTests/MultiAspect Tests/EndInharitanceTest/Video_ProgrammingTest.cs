@@ -1,10 +1,13 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static BYT_Project.Model.Course;
+using static BYT_Project.Model.Managment;
 
 namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
 {
@@ -43,6 +46,13 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         public void Video_ProgrammingDataValidationTest_FrameworksList()
         {
             Assert.IsInstanceOf<List<string>?>(video_Programming.FrameworksList);
+        }
+
+        [Test]
+        public void Video_ProgrammingRangeValidationTest_VideosNumber()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new Video_Programming(TimeSpan.Zero, -1, "java", Techlist, "name", 10, role, difficultyLevel, tests)));
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +46,13 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         public void Video_ManagmentDataValidationTest_Level()
         {
             Assert.IsInstanceOf<Level>(video_Managment.level);
+        }
+        [Test]
+        public void Video_ManagmentRangeValidationTest_VideosNumber()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new Video_Managment(TimeSpan.Zero, -1, "field",
+            level, "middle", 12, role, difficultyLevel, tests)));
         }
     }
 }

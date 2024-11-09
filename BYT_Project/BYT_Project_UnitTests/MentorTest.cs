@@ -1,4 +1,6 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project_UnitTests
 {
@@ -54,6 +56,13 @@ namespace BYT_Project_UnitTests
         {
             Assert.IsInstanceOf<string>(mentor.Specialization);
         }
-        
+
+        [Test]
+        public void MentorEmptySringValidationTest_Specialization()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
+        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "")));
+        }
     }
 }

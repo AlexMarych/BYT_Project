@@ -1,5 +1,8 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 using static BYT_Project.Model.Course;
+using static BYT_Project.Model.Managment;
 
 namespace BYT_Project_UnitTests.MultiAspect_Tests
 {
@@ -24,6 +27,13 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests
         public void ProgrammingDataValidationTest_FrameworksList()
         {
             Assert.IsInstanceOf<List<string>?>(programming.FrameworksList);
+        }
+
+        [Test]
+        public void ProgrammingEmptySringValidationTest_TechnologyName()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new Text_Programming("", new(), "fff", listOfFrameworks, "middle", 12, role, difficultyLevel, tests)));
         }
     }
 }

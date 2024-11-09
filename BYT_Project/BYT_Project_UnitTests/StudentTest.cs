@@ -1,4 +1,6 @@
 using BYT_Project.Model;
+using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project_UnitTests;
 
@@ -38,5 +40,21 @@ public class StudentTest
     public void StudentValidationTest_GPA()
     {
         Assert.IsInstanceOf<int>(student.Gpa);
+    }
+
+    [Test]
+    public void StudentRangeValidationTest_Balance()
+    {
+        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
+            new DateTime(2020, 08, 11), -1, 4)));
+    }
+
+    [Test]
+    public void StudentRangeValidationTest_Gpa()
+    {
+        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
+            new DateTime(2020, 08, 11), 12000, 6)));
     }
 }
