@@ -1,5 +1,7 @@
 using BYT_Project.Model;
-
+using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
+using static BYT_Project.Utils.CutsomValidator;
 namespace BYT_Project_UnitTests;
 
 public class PaymentTest
@@ -36,6 +38,18 @@ public class PaymentTest
     {
         Assert.IsInstanceOf<Course>(payment.Course);
     }
-    
-    
+
+    [Test]
+    public void PaymentRequiredValidationTest_Student()
+    {
+        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            new Payment(new DateTime(2023, 11, 11), null, course)));
+    }
+
+    [Test]
+    public void PaymentRequiredValidationTest_Course()
+    {
+        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            new Payment(new DateTime(2023, 11, 11), student, null)));
+    }
 }

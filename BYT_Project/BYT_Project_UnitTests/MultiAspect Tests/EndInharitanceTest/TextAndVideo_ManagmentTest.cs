@@ -1,6 +1,8 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,15 +48,29 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         }
 
         [Test]
-        public void ManagmentDataValidationTest_Field()
+        public void TextAndVideo_ManagmentDataValidationTest_Field()
         {
             Assert.IsInstanceOf<string>(textAndVideo_Managment.Field);
         }
 
         [Test]
-        public void ManagmentDataValidationTest_Level()
+        public void TextAndVideo_ManagmentDataValidationTest_Level()
         {
             Assert.IsInstanceOf<Level>(textAndVideo_Managment.level);
+        }
+        [Test]
+        public void TextAndVideo_ManagmentEmptySringValidationTest_Content()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new TextAndVideo_Managment("", TimeSpan.Zero, TimeSpan.Zero, 10, "field",
+            level, "middle", 12, role, difficultyLevel, tests)));
+        }
+        [Test]
+        public void TextAndVideo_ManagmentRangeValidationTest_VideosNumber()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new TextAndVideo_Managment("content", TimeSpan.Zero, TimeSpan.Zero, -1, "field",
+            level, "middle", 12, role, difficultyLevel, tests)));
         }
     }
 }

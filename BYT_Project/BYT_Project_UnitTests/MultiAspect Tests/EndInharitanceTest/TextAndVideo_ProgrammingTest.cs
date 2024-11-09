@@ -1,4 +1,6 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
 using static BYT_Project.Model.Course;
 using static BYT_Project.Model.Managment;
 
@@ -14,7 +16,7 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         private static DifficultyLevel difficultyLevel;
         private static List<string> Techlist = new List<string>();
 
-        TextAndVideo_Programming textAndVideo_Programming = new("content", TimeSpan.Zero, TimeSpan.Zero, 10, "java", Techlist, "name", 10, role, difficultyLevel, tests);
+        TextAndVideo_Programming textAndVideo_Programming = new TextAndVideo_Programming("content", TimeSpan.Zero, TimeSpan.Zero, 10, "java", Techlist, "name", 10, role, difficultyLevel, tests);
 
         [Test]
         public void TextAndVideo_ProgrammingDataValidationTest_Content()
@@ -50,6 +52,20 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         public void TextAndVideo_ProgrammingDataValidationTest_FrameworksList()
         {
             Assert.IsInstanceOf<List<string>?>(textAndVideo_Programming.FrameworksList);
+        }
+
+        [Test]
+        public void TextAndVideo_ProgrammingRangeValidationTest_VideosNumber()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new TextAndVideo_Programming("content", TimeSpan.Zero, TimeSpan.Zero, -1, "java", Techlist, "name", 10, role, difficultyLevel, tests)));
+        }
+
+        [Test]
+        public void TextAndVideo_ProgrammingEmptySringValidationTest_TechnologyName()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new TextAndVideo_Programming("content", TimeSpan.Zero, TimeSpan.Zero, 10, "", Techlist, "name", 10, role, difficultyLevel, tests)));
         }
     }
 }

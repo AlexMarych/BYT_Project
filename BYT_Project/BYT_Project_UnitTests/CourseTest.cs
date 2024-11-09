@@ -1,6 +1,10 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using static BYT_Project.Model.Course;
 using static BYT_Project.Model.Managment;
+using static BYT_Project.Utils.CutsomValidator;
 
 namespace BYT_Project_UnitTests
 {
@@ -15,7 +19,6 @@ namespace BYT_Project_UnitTests
         private static DifficultyLevel difficultyLevel;
 
         private static Course course = new Text_Managment("field", new(), "ss", level, "middle", 12, role, difficultyLevel, tests);
-
 
         [Test]
         public void CourseDataValidationTest_Name()
@@ -48,5 +51,21 @@ namespace BYT_Project_UnitTests
         {
             Assert.IsInstanceOf<List<Test>>(course.Tests);
         }
+
+        [Test]
+        public void CourseRangeValidationTest_Price()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new Text_Managment("field", new(), "ss", level, "middle", -1, role, difficultyLevel, tests)));
+        }
+
+        [Test]
+        public void CourseEmptySringValidationTest_Name()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new Text_Managment("field", new(), "", level, "middle", 12, role, difficultyLevel, tests)));
+        }
+
+        
     }
 }

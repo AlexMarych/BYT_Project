@@ -14,7 +14,6 @@ namespace BYT_Project.Model
             Low
         }
 
-        [Required]
         public Level level { get; set; }
 
         public Managment(string field, Level level, string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel difficultyLevel, List<Test>? tests) : base(name, price, mentors, difficultyLevel, tests)

@@ -1,6 +1,8 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +32,13 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests
         public void ManagmentDataValidationTest_Level()
         {
             Assert.IsInstanceOf<Level>(course.level);
+        }
+
+        [Test]
+        public void ManagmentEmptySringValidationTest_Field()
+        {
+            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+                new Text_Managment("", new(), "ss", level, "middle", 12, role, difficultyLevel, [])));
         }
     }
 }
