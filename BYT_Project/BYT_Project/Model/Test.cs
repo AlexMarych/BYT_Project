@@ -37,4 +37,15 @@ public class Test
     {
         return $"Id: {Id}, CreatedAt: {CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")}, SolvingTime: {SolvingTime}";
     }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Test test &&
+               Id == test.Id;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Id);
+    }
 }

@@ -24,5 +24,17 @@ namespace BYT_Project.Model
         {
             return base.ToString() + $" Salary: {Salary}, Experience: {Experience}, DateOfEmployment: {DateOfEmployment.ToString("yyyy-MM-dd HH:mm:ss")}";
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Employee employee &&
+                   base.Equals(obj) &&
+                   Id == employee.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), Id);
+        }
     }
 }

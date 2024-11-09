@@ -28,5 +28,17 @@ namespace BYT_Project.Model
             ExtentManager.ClearExtent<Video_Managment>();
             ExtentManager.SaveExtent(_extent);
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Video_Managment managment &&
+                   base.Equals(obj) &&
+                   Id == managment.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), Id);
+        }
     }
 }

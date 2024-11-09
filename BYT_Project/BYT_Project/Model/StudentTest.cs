@@ -34,4 +34,16 @@ public class StudentTest
         ExtentManager.ClearExtent<StudentTest>();
         ExtentManager.SaveExtent(_extent);
     }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is StudentTest test &&
+               EqualityComparer<Student>.Default.Equals(Student, test.Student) &&
+               EqualityComparer<Test>.Default.Equals(Test, test.Test);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Student, Test);
+    }
 }

@@ -39,5 +39,16 @@ namespace BYT_Project.Model
         {
             return $"Id: {Id}, Name: {Name}, Price: {Price}";
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Course course &&
+                   Id == course.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
     }
 }

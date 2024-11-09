@@ -22,5 +22,17 @@ namespace BYT_Project.Model
             Field = field;
             this.level = level;
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Managment managment &&
+                   base.Equals(obj) &&
+                   Id == managment.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), Id);
+        }
     }
 }

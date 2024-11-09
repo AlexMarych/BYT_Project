@@ -5,7 +5,7 @@ namespace BYT_Project.Model
     public class Support : Employee
     {
         public List<Petition>? Petitions { get; set; }
-        public int salaryBonus { get; set; }
+        public int SalaryBonus { get; set; }
         private static List<Support> _extent = [];
 
         static Support()
@@ -22,9 +22,15 @@ namespace BYT_Project.Model
             ExtentManager.SaveExtent(_extent);
         }
 
-        public override string ToString()
+        public override bool Equals(object? obj)
         {
-            return base.ToString();
+            return obj is Support support &&
+                   Id == support.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
         }
     }
 }

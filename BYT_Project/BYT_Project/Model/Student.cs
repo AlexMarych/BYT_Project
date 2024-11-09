@@ -36,5 +36,15 @@ namespace BYT_Project.Model
             return base.ToString() + $" Balance: {Balance}, Gpa: {Gpa}";
         }
 
+        public override bool Equals(object? obj)
+        {
+            return obj is Student student &&
+                   Id == student.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
     }
 }
