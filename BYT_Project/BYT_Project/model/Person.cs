@@ -28,5 +28,16 @@ namespace BYT_Project.Model
         {
             return $"Id: {Id}, Name: {Name}, Surname: {Surname}, DateOfBirth: {DateOfBirth.ToString("yyyy-MM-dd")}, CreatedAt: {CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")}";
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Person person &&
+                   Id == person.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
     }
 }

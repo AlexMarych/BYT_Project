@@ -13,5 +13,17 @@ namespace BYT_Project.Model
             TechnologyName = technologyName;
             FrameworksList = frameworkList;
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Programming programming &&
+                   base.Equals(obj) &&
+                   Id == programming.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), Id);
+        }
     }
 }

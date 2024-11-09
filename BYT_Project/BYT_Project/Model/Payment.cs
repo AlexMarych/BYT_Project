@@ -37,4 +37,15 @@ public class Payment
     {
         return $"TransactionId: {TransactionId}, PaymentDate: {PaymentDate}";
     }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Payment payment &&
+               TransactionId == payment.TransactionId;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(TransactionId);
+    }
 }

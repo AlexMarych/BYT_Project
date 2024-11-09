@@ -34,5 +34,17 @@ namespace BYT_Project.Model
             ExtentManager.ClearExtent<TextAndVideo_Programming>();
             ExtentManager.SaveExtent(_extent);
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is TextAndVideo_Programming programming &&
+                   base.Equals(obj) &&
+                   Id == programming.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), Id);
+        }
     }
 }

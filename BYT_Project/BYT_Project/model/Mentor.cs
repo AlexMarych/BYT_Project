@@ -31,5 +31,17 @@ namespace BYT_Project.Model
         {
             return base.ToString() + $"Specialization: {Specialization}";
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Mentor mentor &&
+                   base.Equals(obj) &&
+                   Id == mentor.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), Id);
+        }
     }
 }

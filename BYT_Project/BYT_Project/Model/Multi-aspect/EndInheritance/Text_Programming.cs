@@ -27,5 +27,17 @@ namespace BYT_Project.Model
             ExtentManager.ClearExtent<Text_Programming>();
             ExtentManager.SaveExtent(_extent);
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Text_Programming programming &&
+                   base.Equals(obj) &&
+                   Id == programming.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(base.GetHashCode(), Id);
+        }
     }
 }

@@ -39,4 +39,15 @@ public class Question
     {
         return $"Id: {Id}, Text: {Text}, Answer: {Answer}, PossibleAnswers: {PossibleAnswers}";
     }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Question question &&
+               Id == question.Id;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Id);
+    }
 }

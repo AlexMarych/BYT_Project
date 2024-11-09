@@ -40,5 +40,16 @@ namespace BYT_Project.Model
         {
             return $"Id: {Id}, Text: {Text}, Status: {Status}";
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Petition petition &&
+                   Id == petition.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
     }
 }

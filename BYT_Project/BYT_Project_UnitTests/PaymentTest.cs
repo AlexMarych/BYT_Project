@@ -11,14 +11,9 @@ public class PaymentTest
             new DateTime(2020, 08, 11), 12000, 4);
     
     private static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
-
-    private static List<Test>? questions = new List<Test>();
-    
     private static Managment.Level level = Managment.Level.Top;
     private static Course.DifficultyLevel difficultyLevel = Course.DifficultyLevel.Intermidiate;
-    
     private static Course course = new Text_Managment("field", new(), "ss", level, "middle", 12, role, difficultyLevel, []);
-
     private Payment payment = new Payment(new DateTime(2023, 11, 11), student, course);
 
     [Test]

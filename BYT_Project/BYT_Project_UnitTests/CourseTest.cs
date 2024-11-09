@@ -1,10 +1,8 @@
 ﻿using BYT_Project.Model;
 using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 using static BYT_Project.Model.Course;
 using static BYT_Project.Model.Managment;
-using static BYT_Project.Utils.CutsomValidator;
 
 namespace BYT_Project_UnitTests
 {
