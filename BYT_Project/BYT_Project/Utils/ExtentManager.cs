@@ -10,7 +10,8 @@ namespace BYT_Project.Utils
         private static JsonSerializerSettings _settings => new()
         {
             TypeNameHandling = TypeNameHandling.Auto,
-            Formatting = Formatting.Indented
+            Formatting = Formatting.Indented,
+            PreserveReferencesHandling = PreserveReferencesHandling.Objects
         };
 
         public static void SaveExtent<T>(List<T> extent)

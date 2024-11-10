@@ -16,9 +16,10 @@ namespace BYT_Project.Model
             _extent = ExtentManager.LoadExtent<Mentor>();
         }
 
-        public Mentor(int salary, string experience, DateTime dateOfEmployment, string name, string surname, DateTime dateOfBirth, DateTime createdAt, string specialization) : base(salary, experience, dateOfEmployment, name, surname, dateOfBirth, createdAt)
+        public Mentor(int salary, string experience, DateTime dateOfEmployment, string name, string surname, DateTime dateOfBirth, DateTime createdAt, string specialization, Mentor mentor) : base(salary, experience, dateOfEmployment, name, surname, dateOfBirth, createdAt)
         {
             Specialization = specialization;
+            Chief = mentor;
 
             CutsomValidator.Validate(this);
 

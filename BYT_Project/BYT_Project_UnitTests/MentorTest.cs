@@ -7,7 +7,7 @@ namespace BYT_Project_UnitTests
     internal class MentorTest
     {
         Mentor mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec");
+        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec", null);
 
         [Test]
         public void MentorDataValidationTest_Salary()
@@ -62,7 +62,7 @@ namespace BYT_Project_UnitTests
         {
             Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
                 new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "")));
+        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "", null)));
         }
     }
 }

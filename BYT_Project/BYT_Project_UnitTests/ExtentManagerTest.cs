@@ -82,7 +82,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeMentor()
         {
-            var var = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec");
+            var var = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec", null);
             var list = ExtentManager.LoadExtent<Mentor>();
 
             Assert.That(list[^1], Is.EqualTo(var));
