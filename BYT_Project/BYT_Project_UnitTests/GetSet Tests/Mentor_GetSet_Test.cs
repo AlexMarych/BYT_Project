@@ -7,11 +7,11 @@ public class Mentor_GetSet_Test
     [Test]
     public void Specialization_Test()
     {
-        string expSpecialization = "specialist";
+        var expSpecialization = "specialist";
         var mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
             new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), expSpecialization);
 
-        string actualSpecialization = mentor.Specialization;
+        var actualSpecialization = mentor.Specialization;
         Assert.AreEqual(expSpecialization, actualSpecialization);
     }
 
@@ -29,19 +29,18 @@ public class Mentor_GetSet_Test
         
         Assert.AreEqual(bossMentor, actualChief);
         
-        //надеюсь эта хуйня работает, но вроде, все должно быть по красоте: статус показывает что все ок
-        //нужно будет обкатать с входными данными 
-        //воооот такие дела
     }
 
     [Test]
     public void Course_Test()
     {
 
-        var courses = new List<Course>();
+       
         var mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
             new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec");
 
+        var courses = new List<Course>();
+        
         mentor.Courses = courses;
         var actualCourses = mentor.Courses;
         CollectionAssert.AreEqual(courses, actualCourses);
