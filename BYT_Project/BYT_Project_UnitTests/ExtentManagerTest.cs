@@ -1,7 +1,6 @@
 ﻿using BYT_Project.Model;
 using BYT_Project.Utils;
 using static BYT_Project.Model.Course;
-using System.Data;
 using static BYT_Project.Model.Managment;
 
 namespace BYT_Project_UnitTests
@@ -76,7 +75,7 @@ namespace BYT_Project_UnitTests
             var var = new Payment(new DateTime(2023, 11, 11), student, course);
             var list = ExtentManager.LoadExtent<Payment>();
 
-            Assert.That(list[^1], Is.EqualTo(var));
+            Assert.That(list[^1], Is.EqualTo(var)); 
         }
 
         [Test]
