@@ -6,7 +6,11 @@ namespace BYT_Project_UnitTests;
 
 public class QuestionTest
 {
-    private Question question = new Question("Swofford?", "Sir yes sir!", new List<string>());
+    private Question question = new Question("Swofford?", "Sir yes sir!", new List<string>
+            {
+                "dadad",
+                "dadada"
+            });
 
 
     [Test]
@@ -14,13 +18,13 @@ public class QuestionTest
     {
         Assert.IsInstanceOf<string>(question.Text);
     }
-    
+
     [Test]
     public void QuestionDataValidation_QuestionAnswer()
     {
         Assert.IsInstanceOf<string>(question.Answer);
     }
-    
+
     [Test]
     public void QuestionDataValidation_PossibleAnswers()
     {

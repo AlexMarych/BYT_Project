@@ -11,7 +11,12 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeTest()
         {
-            var var = new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), []);
+            var var = new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new()
+            {
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"})
+            });
             var list = ExtentManager.LoadExtent<Test>();
 
             Assert.That(list[^1], Is.EqualTo(var));
@@ -30,7 +35,12 @@ namespace BYT_Project_UnitTests
         public void SerializeAndDeserializeStudentTest()
         {
             var student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 1000, []);
-            Test test = new(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), []);
+            Test test = new(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new()
+            {
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"})
+            });
 
             var var = new BYT_Project.Model.StudentTest(student, test, 5);
             var list = ExtentManager.LoadExtent<BYT_Project.Model.StudentTest>();
@@ -50,7 +60,11 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeQuestion()
         {
-            var var = new Question("Swofford?", "Sir yes sir!", []);
+            var var = new Question("Swofford?", "Sir yes sir!", new List<string>
+            {
+                "dadad",
+                "dadada"
+            });
             var list = ExtentManager.LoadExtent<Question>();
 
             Assert.That(list[^1], Is.EqualTo(var));

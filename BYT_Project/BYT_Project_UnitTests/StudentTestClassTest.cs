@@ -8,7 +8,12 @@ public class StudentTestClassTest
 {
     private static Student student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
     new DateTime(2020, 08, 11), 1000, []);
-    private static Test test = new(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), []);
+    private static Test test = new(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new()
+    {
+        new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+        new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+        new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"})
+    });
     private static BYT_Project.Model.StudentTest studentTest = new(student, test, 5);
 
     [Test]

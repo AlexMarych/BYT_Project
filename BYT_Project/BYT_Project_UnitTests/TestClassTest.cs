@@ -6,7 +6,12 @@ namespace BYT_Project_UnitTests;
 
 public class TestClassTest
 {
-    private static List<Question> questions = new List<Question>();
+    private static List<Question> questions = new()
+    {
+        new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+        new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+        new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"})
+    };
     Test test = new Test( new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), questions);
 
     [Test]
@@ -32,8 +37,6 @@ public class TestClassTest
     {
         Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new List<Question>() {
-            null,
-            null,
             null
                 })));
     }

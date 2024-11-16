@@ -4,7 +4,11 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.GetSet_Tests;
 
 public class Question_GetSet_Test
 {
-    private Question question = new Question("Swofford?", "Sir yes sir!", new List<string>());
+    private Question question = new Question("Swofford?", "Sir yes sir!", new List<string>
+            {
+                "dadad",
+                "dadada"
+            });
 
     [Test]
     public void Text_Test()
