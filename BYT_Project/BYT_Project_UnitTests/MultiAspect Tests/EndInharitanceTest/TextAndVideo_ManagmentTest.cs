@@ -56,14 +56,14 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         [Test]
         public void TextAndVideo_ManagmentEmptySringValidationTest_Content()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new TextAndVideo_Managment("", TimeSpan.Zero, TimeSpan.Zero, 10, "field",
             level, "middle", 12, role, difficultyLevel, tests)));
         }
         [Test]
         public void TextAndVideo_ManagmentRangeValidationTest_VideosNumber()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new TextAndVideo_Managment("content", TimeSpan.Zero, TimeSpan.Zero, -1, "field",
             level, "middle", 12, role, difficultyLevel, tests)));
         }

@@ -32,20 +32,20 @@ public class StudentTestClassTest
     [Test]
     public void StudentRangeValidationTest_Grade()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
              new BYT_Project.Model.StudentTest(student, test, 6)));
     }
 
     [Test]
     public void StudentRequiredValidationTest_Student()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new BYT_Project.Model.StudentTest(null, test, 3)));
     }
     [Test]
     public void StudentRequiredValidationTest_Test()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new BYT_Project.Model.StudentTest(student, null, 3)));
     }
 }

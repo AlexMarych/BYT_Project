@@ -66,7 +66,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void MentorEmptySringValidationTest_Specialization()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", "dog@gmail.com",
         new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "", null)));
         }

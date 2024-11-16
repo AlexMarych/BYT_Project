@@ -27,7 +27,7 @@ namespace BYT_Project.Model
             StudentTests = studentTests;
             Gpa = StudentTests != null && StudentTests.Count != 0 ? StudentTests.Sum(x => x.Grade) / StudentTests.Count : 0;
 
-            CutsomValidator.Validate(this);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Student>();

@@ -30,7 +30,7 @@ namespace BYT_Project.Model
             Text = text;
             Status = status;
 
-            CutsomValidator.Validate(this);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Petition>();

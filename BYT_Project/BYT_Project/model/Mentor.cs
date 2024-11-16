@@ -22,7 +22,7 @@ namespace BYT_Project.Model
             Specialization = specialization;
             Chief = mentor;
 
-            CutsomValidator.Validate(this);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Mentor>();

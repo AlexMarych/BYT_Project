@@ -22,7 +22,7 @@ namespace BYT_Project.Model
         {
             Petitions = petitions;
             SalaryBonus = (int)(Petitions.Count * SALARY_MULTIPLIER * Salary);
-            CutsomValidator.Validate(this);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Support>();

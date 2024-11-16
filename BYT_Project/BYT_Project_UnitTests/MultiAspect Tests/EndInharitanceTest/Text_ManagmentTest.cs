@@ -45,7 +45,7 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         [Test]
         public void Text_ManagmentEmptySringValidationTest_Content()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Text_Managment("", TimeSpan.Zero, "field",
             level, "middle", 12, role, difficultyLevel, tests)));
         }

@@ -21,7 +21,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void PetitionEmptySringValidationTest_Text()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Petition("", Petition.StatusType.Opened)));
         }
     }

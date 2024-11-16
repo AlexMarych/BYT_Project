@@ -54,14 +54,14 @@ public class EmployeeTest
     [Test]
     public void EmployeeRangeValidationTest_Salary()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Support(-5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), [])));
     }
 
     [Test]
     public void EmployeeEmptySringValidationTest_Expirience()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Support(5, "", new(), "da", "dada", "dog@gmail.com", new(), new(), [])));
     }
 }

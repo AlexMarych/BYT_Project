@@ -35,14 +35,14 @@ public class PaymentTest
     [Test]
     public void PaymentRequiredValidationTest_Student()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Payment(new DateTime(2023, 11, 11), null, course)));
     }
 
     [Test]
     public void PaymentRequiredValidationTest_Course()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Payment(new DateTime(2023, 11, 11), student, null)));
     }
 }

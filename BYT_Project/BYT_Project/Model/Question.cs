@@ -16,6 +16,7 @@ public class Question
     public string Answer { get; set; }
 
     [NoEmptyStrings]
+    [MinLength(2)]
     public List<string> PossibleAnswers { get; set; }
 
     private static List<Question> _extent = [];

@@ -45,7 +45,7 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         [Test]
         public void Video_ProgrammingRangeValidationTest_VideosNumber()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Video_Programming(TimeSpan.Zero, -1, "java", Techlist, "name", 10, role, difficultyLevel, tests)));
         }
     }

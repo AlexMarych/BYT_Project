@@ -21,7 +21,6 @@ namespace BYT_Project.Model
 
         [Range(0, int.MaxValue)]
         public int Price { get; set; }
-        public static float MinScore = 0.5f;
         public IDictionary<string, Mentor>? Mentors { get; set; }
 
         public List<Test>? Tests { get; set; }

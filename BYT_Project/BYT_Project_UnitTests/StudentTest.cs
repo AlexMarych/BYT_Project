@@ -54,7 +54,7 @@ public class StudentTest
     [Test]
     public void StudentRangeValidationTest_Balance()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
             new DateTime(2020, 08, 11), -1, [])));
     }

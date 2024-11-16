@@ -30,14 +30,14 @@ public class QuestionTest
     [Test]
     public void QuestionEmptySringValidationTest_Text()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Question("", "Sir yes sir!", new List<string>())));
     }
 
     [Test]
     public void QuestionEmptySringValidationTest_Answer()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Question("Swofford?", "", new List<string>())));
     }
 }

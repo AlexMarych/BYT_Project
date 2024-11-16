@@ -44,7 +44,7 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         [Test]
         public void Text_ProgrammingEmptySringValidationTest_TechnologyName()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Text_Programming("content", TimeSpan.Zero, "", Techlist, "name", 10, role, difficultyLevel, tests)));
         }
     }
