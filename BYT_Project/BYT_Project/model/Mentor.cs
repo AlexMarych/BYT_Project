@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 
 namespace BYT_Project.Model
 {
@@ -16,7 +17,7 @@ namespace BYT_Project.Model
             _extent = ExtentManager.LoadExtent<Mentor>();
         }
 
-        public Mentor(int salary, string experience, DateTime dateOfEmployment, string name, string surname, DateTime dateOfBirth, DateTime createdAt, string specialization, Mentor mentor) : base(salary, experience, dateOfEmployment, name, surname, dateOfBirth, createdAt)
+        public Mentor(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth, DateTime createdAt, string specialization, Mentor mentor) : base(salary, experience, dateOfEmployment, name, surname, email, dateOfBirth, createdAt)
         {
             Specialization = specialization;
             Chief = mentor;

@@ -1,8 +1,7 @@
 ﻿using BYT_Project.Model;
-using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 using static BYT_Project.Model.Course;
-using static BYT_Project.Model.Managment;
 
 namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
 {

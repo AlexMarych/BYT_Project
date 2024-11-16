@@ -1,9 +1,6 @@
 using BYT_Project.Model;
-using BYT_Project.Utils;
-using static BYT_Project.Model.Course;
-using static BYT_Project.Model.Managment;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
+using BYT_Project.Utils.Validation;
 
 namespace BYT_Project_UnitTests;
 

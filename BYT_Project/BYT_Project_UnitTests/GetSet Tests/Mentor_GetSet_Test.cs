@@ -4,25 +4,20 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.GetSet_Tests;
 
 public class Mentor_GetSet_Test
 {
+    private static Mentor mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", "dog@gmail.com",
+            new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "specialist", null);
     [Test]
     public void Specialization_Test()
     {
-        string expSpecialization = "specialist";
-        var mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-            new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), expSpecialization, null);
-
         string actualSpecialization = mentor.Specialization;
-        Assert.AreEqual(expSpecialization, actualSpecialization);
+        Assert.AreEqual("specialist", actualSpecialization);
     }
 
     [Test]
     public void Chief_Test()
     {
-        var bossMentor = new Mentor(10000, "Super-Senior", new DateTime(2021, 06, 21), "Kirill", "Wazowski",
+        var bossMentor = new Mentor(10000, "Super-Senior", new DateTime(2021, 06, 21), "Kirill", "Wazowski", "dog@gmail.com",
         new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "guru", null);
-
-        var mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-            new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec", bossMentor);
 
         mentor.Chief = bossMentor;
         var actualChief = mentor.Chief;
@@ -34,8 +29,6 @@ public class Mentor_GetSet_Test
     public void Course_Test()
     {
         var courses = new List<Course>();
-        var mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-            new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec", null);
 
         mentor.Courses = courses;
         var actualCourses = mentor.Courses;

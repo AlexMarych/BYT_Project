@@ -5,37 +5,37 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.GetSet_Tests;
 
 public class Student_GetSet_Test
 {
-    
+    private static Student student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
+    new DateTime(2020, 08, 11), 1000, []);
+
     [Test]
     public void Balance_Test()
     {
-        int expBalance = 1000;
-        var student = new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
-            new DateTime(2020, 08, 11), expBalance, 4);
-
         int actualBalance = student.Balance;
-        
-        Assert.AreEqual(expBalance, actualBalance);
+
+        Assert.AreEqual(1000, actualBalance);
+    }
+
+    [Test]
+    public void Email_Test()
+    {
+        string actualEmail = student.Email;
+
+        Assert.AreEqual("dog@gmail.com", actualEmail);
     }
 
     [Test]
     public void GPA_Test()
     {
-        int expGPA = 2;
-        var student = new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
-            new DateTime(2020, 08, 11), 1000, expGPA);
-
         int actualGPA = student.Gpa;
-        
-        Assert.AreEqual(expGPA, actualGPA);
+
+        Assert.AreEqual(0, actualGPA);
     }
 
     [Test]
     public void Petitions_Test()
     {
         var petitons = new List<Petition>();
-        var student = new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
-            new DateTime(2020, 08, 11), 1000, 4);
 
         student.Petitions = petitons;
         var actualPetitions = student.Petitions;
@@ -45,15 +45,19 @@ public class Student_GetSet_Test
     [Test]
     public void Course_Test()
     {
-
         var courses = new List<Course>();
-        var student = new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
-            new DateTime(2020, 08, 11), 1000, 4);
 
         student.Courses = courses;
         var actualCourses = student.Courses;
         CollectionAssert.AreEqual(courses, actualCourses);
     }
-    
 
+    [Test]
+    public void StudentTest_Test()
+    {
+        var studentTests = new List<BYT_Project.Model.StudentTest>();
+
+        student.StudentTests = studentTests;
+        var actualStudentTests = student.StudentTests;
+    }
 }

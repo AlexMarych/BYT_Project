@@ -4,7 +4,7 @@ namespace BYT_Project_UnitTests
 {
     public class SupportClassTest
     {
-        private static Support support = new(5, "adad", new(), "dasda", "ada", new(), new());
+        private static Support support = new(5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), []);
 
         [Test]
         public void SupportDataValidationTest_Salary()
@@ -34,6 +34,12 @@ namespace BYT_Project_UnitTests
         public void SupportDataValidationTest_Surname()
         {
             Assert.IsInstanceOf<string>(support.Surname);
+        }
+
+        [Test]
+        public void SupportDataValidationTest_Email()
+        {
+            Assert.IsInstanceOf<string>(support.Email);
         }
 
         [Test]

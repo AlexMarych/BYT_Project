@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BYT_Project.Utils.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
@@ -6,6 +7,8 @@ namespace BYT_Project.Model
     {
         [Required(AllowEmptyStrings = false)]
         public string TechnologyName { get; set; }
+
+        [NoEmptyStrings]
         public List<string>? FrameworksList { get; set; }
 
         public Programming(string technologyName, List<string> frameworkList, string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel level, List<Test>? questions) : base(name, price, mentors, level, questions)

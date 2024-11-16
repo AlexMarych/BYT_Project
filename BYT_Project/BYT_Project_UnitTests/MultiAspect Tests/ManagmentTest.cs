@@ -1,5 +1,5 @@
 ﻿using BYT_Project.Model;
-using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

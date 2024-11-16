@@ -4,14 +4,12 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.GetSet_Tests;
 
 public class Payment_GetSet_Test
 {
-    //на ID тест не делал, так как, по задумке, он должен назначаться автоматически. Так что я хз)))) 
+    private static Student student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
+        new DateTime(2020, 08, 11), 1000, []);
 
-    static Student student = new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
-        new DateTime(2020, 08, 11), 1000, 4);
-    
-    static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
+    private static IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
 
-    static List<Test>? tests = new List<Test>();
+    private static List<Test>? tests = new List<Test>();
 
     private static Managment.Level level;
     private static Course.DifficultyLevel difficultyLevel;
@@ -48,8 +46,4 @@ public class Payment_GetSet_Test
         
         Assert.AreEqual(course, actualCourse);
     }
-
-   
-    
-    
 }
