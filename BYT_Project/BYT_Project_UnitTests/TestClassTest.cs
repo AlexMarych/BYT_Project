@@ -30,7 +30,7 @@ public class TestClassTest
     [Test]
     public void TestLenthValidation_Questions()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new List<Question>() {
             null,
             null,

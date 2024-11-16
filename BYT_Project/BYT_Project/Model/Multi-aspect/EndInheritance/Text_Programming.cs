@@ -22,7 +22,7 @@ namespace BYT_Project.Model
             Content = content;
             FamiliarizationTime = familiarizationTime;
 
-            CutsomValidator.Validate(this);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Text_Programming>();

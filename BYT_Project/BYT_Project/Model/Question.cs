@@ -31,7 +31,7 @@ public class Question
         Answer = answer;
         PossibleAnswers = possibleAnswers;
 
-        CutsomValidator.Validate(this);
+        CustomValidator.Validate(this);
 
         _extent.Add(this);
         ExtentManager.ClearExtent<Question>();

@@ -23,7 +23,7 @@ namespace BYT_Project.Model
             OverallDuration = overallDuration;
             VideosNumber = videosNumber;
 
-            CutsomValidator.Validate(this);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Video_Managment>();
