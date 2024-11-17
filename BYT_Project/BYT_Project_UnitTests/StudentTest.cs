@@ -59,15 +59,14 @@ public class StudentTest
             new DateTime(2020, 08, 11), -1, [])));
     }
 
-    // оепедекюрэ!
 
-    //[Test]
-    //public void StudentRangeValidationTest_Gpa()
-    //{
-    //    Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
-    //        new Student("Mike", "Wazowski", new DateTime(2003, 07, 21),
-    //        new DateTime(2020, 08, 11), 12000)));
-    //}
+    [Test]
+    public void StudentRangeValidationTest_Gpa()
+    {
+        Student stud = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
+            new DateTime(2020, 08, 11), 6, []);
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(stud));
+    }
 
 
 }

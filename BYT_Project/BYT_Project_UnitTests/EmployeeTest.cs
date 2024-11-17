@@ -64,4 +64,12 @@ public class EmployeeTest
         Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Support(5, "", new(), "da", "dada", "dog@gmail.com", new(), new(), [])));
     }
+
+    [Test]
+    public void EmployeeEmailValidationTest_Expirience()
+    {
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+            new Support(5, "dada", new(), "da", "dada", "dog", new(), new(), [])));
+    }
+
 }

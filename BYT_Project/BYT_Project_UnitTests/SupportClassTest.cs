@@ -1,10 +1,12 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project_UnitTests
 {
     public class SupportClassTest
     {
-        private static Support support = new(5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), []);
+        private static Support support = new Support(5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), []);
 
         [Test]
         public void SupportDataValidationTest_Salary()
@@ -58,6 +60,13 @@ namespace BYT_Project_UnitTests
         public void SupportDataValidationTest_SalaryBonus()
         {
             Assert.IsInstanceOf<int>(support.SalaryBonus);
+        }
+
+        [Test]
+        public void SupportRangeVlidationTest_SalaryBonus()
+        {
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+                new Support(-5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), [])));
         }
     }
 }

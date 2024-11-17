@@ -44,4 +44,18 @@ public class QuestionTest
         Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Question("Swofford?", "", new List<string>())));
     }
+
+    [Test]
+    public void QuestionEmptySringValidationTest_PossibleAnswers()
+    {
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+            new Question("Swofford?", "Sir Yes Sir", ["",""] )));
+    }
+
+    [Test]
+    public void QuestionAmountValidationTest_PossibleAnswers()
+    {
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+            new Question("Swofford?", "Sir Yes Sir", ["aaaaaa"])));
+    }
 }
