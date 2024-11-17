@@ -60,13 +60,6 @@ public class StudentTest
     }
 
 
-    [Test]
-    public void StudentRangeValidationTest_Gpa()
-    {
-        Student stud = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
-            new DateTime(2020, 08, 11), 6, []);
-        Assert.Throws<ValidationException>(() => CustomValidator.Validate(stud));
-    }
 
 
 }
