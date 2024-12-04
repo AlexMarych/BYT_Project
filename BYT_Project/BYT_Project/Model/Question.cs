@@ -39,6 +39,12 @@ public class Question
         ExtentManager.SaveExtent(_extent);
     }
 
+    public static void Delete(List<Question> questions)
+    {
+        questions.ForEach(x => _extent.Remove(x));
+        ExtentManager.Delete(questions);
+    }
+
     public override string ToString()
     {
         return $"Id: {Id}, Text: {Text}, Answer: {Answer}, PossibleAnswers: {PossibleAnswers}";

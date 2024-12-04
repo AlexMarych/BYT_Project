@@ -34,6 +34,17 @@ public class Test
         ExtentManager.SaveExtent(_extent);
     }
 
+    public static void Create(DateTime createdAt, TimeSpan solvingTime, List<Question> questions)
+    {
+        new Test(createdAt, solvingTime, questions);
+    }
+
+    public static void Delete(Test test)
+    {
+        Question.Delete(test.Questions);
+        ExtentManager.Delete(test);
+    }
+
     public override string ToString()
     {
         return $"Id: {Id}, CreatedAt: {CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")}, SolvingTime: {SolvingTime}";
