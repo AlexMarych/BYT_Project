@@ -1,6 +1,7 @@
 using BYT_Project.Utils;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.Transactions;
 
 namespace BYT_Project.Model;
 
@@ -48,5 +49,16 @@ public class Payment
     public override int GetHashCode()
     {
         return HashCode.Combine(TransactionId);
+    }
+
+
+    public static void Create(Student student, Course course)
+    {
+        new Payment(null, student, course);
+    }
+
+    public void SetPaymentDate(DateTime paymentDate)
+    {
+        this.PaymentDate = paymentDate;
     }
 }
