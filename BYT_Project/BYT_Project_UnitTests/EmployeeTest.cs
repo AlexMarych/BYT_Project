@@ -1,5 +1,5 @@
 using BYT_Project.Model;
-using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project_UnitTests;
@@ -8,8 +8,7 @@ namespace BYT_Project_UnitTests;
 public class EmployeeTest
 {
     
-    Employee employee = new Support(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22));
+    Employee employee = new Support(5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), []);
     
     [Test]
     public void EmployeeDataValidationTest_Salary()
@@ -55,16 +54,22 @@ public class EmployeeTest
     [Test]
     public void EmployeeRangeValidationTest_Salary()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
-            new Support(-1, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22))));
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+            new Support(-5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), [])));
     }
 
     [Test]
     public void EmployeeEmptySringValidationTest_Expirience()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
-            new Support(1000, "", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22))));
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+            new Support(5, "", new(), "da", "dada", "dog@gmail.com", new(), new(), [])));
     }
+
+    [Test]
+    public void EmployeeEmailValidationTest_Expirience()
+    {
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+            new Support(5, "dada", new(), "da", "dada", "dog", new(), new(), [])));
+    }
+
 }

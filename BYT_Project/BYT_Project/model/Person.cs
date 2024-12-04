@@ -13,13 +13,16 @@ namespace BYT_Project.Model
         [Required(AllowEmptyStrings = false)]
         public string Surname { get; set; }
 
+        [EmailAddress]
+        public string Email { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        protected Person(string name, string surname, DateTime dateOfBirth, DateTime createdAt)
+        protected Person(string name, string surname, string email, DateTime dateOfBirth, DateTime createdAt)
         {
             Name = name;
             Surname = surname;
+            Email = email;
             DateOfBirth = dateOfBirth;
             CreatedAt = createdAt;
         }

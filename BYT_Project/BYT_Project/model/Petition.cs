@@ -1,4 +1,5 @@
 ﻿using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -29,7 +30,7 @@ namespace BYT_Project.Model
             Text = text;
             Status = status;
 
-            CutsomValidator.Validate(this);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Petition>();

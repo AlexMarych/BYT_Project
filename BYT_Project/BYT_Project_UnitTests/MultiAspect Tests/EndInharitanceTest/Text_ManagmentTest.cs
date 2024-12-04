@@ -1,11 +1,6 @@
 ﻿using BYT_Project.Model;
-using BYT_Project.Utils;
-using System;
-using System.Collections.Generic;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static BYT_Project.Model.Course;
 using static BYT_Project.Model.Managment;
 
@@ -50,7 +45,7 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests.EndInharitanceTest
         [Test]
         public void Text_ManagmentEmptySringValidationTest_Content()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Text_Managment("", TimeSpan.Zero, "field",
             level, "middle", 12, role, difficultyLevel, tests)));
         }

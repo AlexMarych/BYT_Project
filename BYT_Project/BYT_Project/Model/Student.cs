@@ -1,4 +1,5 @@
 using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -9,9 +10,10 @@ namespace BYT_Project.Model
         public int Balance { get; set; }
 
         [Range(0, 5)]
-        public int Gpa { get; set; }
+        public int Gpa { get; }
         public List<Petition>? Petitions { get; set; }
         public List<Course>? Courses { get; set; }
+        public List<StudentTest>? StudentTests { get; set; }
         private static List<Student> _extent = [];
 
         static Student()
@@ -19,12 +21,13 @@ namespace BYT_Project.Model
             _extent = ExtentManager.LoadExtent<Student>();
         }
 
-        public Student(string name, string surname, DateTime dateOfBirth, DateTime createdAt, int balance, int gpa) : base(name, surname, dateOfBirth, createdAt)
+        public Student(string name, string surname, string email, DateTime dateOfBirth, DateTime createdAt, int balance, List<StudentTest> studentTests) : base(name, surname, email, dateOfBirth, createdAt)
         {
             Balance = balance;
-            Gpa = gpa;
+            StudentTests = studentTests;
+            Gpa = StudentTests != null && StudentTests.Count != 0 ? StudentTests.Sum(x => x.Grade) / StudentTests.Count : 0;
 
-            CutsomValidator.Validate(this);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Student>();

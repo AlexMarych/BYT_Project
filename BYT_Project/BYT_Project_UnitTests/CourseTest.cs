@@ -1,5 +1,5 @@
 ﻿using BYT_Project.Model;
-using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 using static BYT_Project.Model.Course;
 using static BYT_Project.Model.Managment;
@@ -53,14 +53,14 @@ namespace BYT_Project_UnitTests
         [Test]
         public void CourseRangeValidationTest_Price()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Text_Managment("field", new(), "ss", level, "middle", -1, role, difficultyLevel, tests)));
         }
 
         [Test]
         public void CourseEmptySringValidationTest_Name()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Text_Managment("field", new(), "", level, "middle", 12, role, difficultyLevel, tests)));
         }
 

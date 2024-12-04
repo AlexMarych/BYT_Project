@@ -12,8 +12,8 @@ namespace BYT_Project.Model
 
         public DateTime DateOfEmployment { get; set; }
 
-        protected Employee(int salary, string experience, DateTime dateOfEmployment, string name, string surname, DateTime dateOfBirth, DateTime createdAt)
-            : base(name, surname, dateOfBirth, createdAt)
+        protected Employee(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth, DateTime createdAt)
+            : base(name, surname, email, dateOfBirth, createdAt)
         {
             Salary = salary;
             Experience = experience;

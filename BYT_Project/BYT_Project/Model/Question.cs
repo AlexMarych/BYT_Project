@@ -1,4 +1,5 @@
 using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model;
@@ -13,6 +14,9 @@ public class Question
 
     [Required(AllowEmptyStrings = false)]
     public string Answer { get; set; }
+
+    [NoEmptyStrings]
+    [MinLength(2)]
     public List<string> PossibleAnswers { get; set; }
 
     private static List<Question> _extent = [];
@@ -22,13 +26,13 @@ public class Question
         _extent = ExtentManager.LoadExtent<Question>();
     }
 
-    public Question(string text, string answer, List<string>? possibleAnswers)
+    public Question(string text, string answer, List<string> possibleAnswers)
     {
         Text = text;
         Answer = answer;
         PossibleAnswers = possibleAnswers;
 
-        CutsomValidator.Validate(this);
+        CustomValidator.Validate(this);
 
         _extent.Add(this);
         ExtentManager.ClearExtent<Question>();

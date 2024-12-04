@@ -1,29 +1,29 @@
 using BYT_Project.Model;
-using BYT_Project.Utils;
-using static BYT_Project.Model.Course;
-using static BYT_Project.Model.Managment;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
+using BYT_Project.Utils.Validation;
 
 namespace BYT_Project_UnitTests;
 
 public class QuestionTest
 {
-    private Question question = new Question("Swofford?", "Sir yes sir!", new List<string>());
-
+    private Question question = new Question("Swofford?", "Sir yes sir!", new List<string>
+            {
+                "dadad",
+                "dadada"
+            });
 
     [Test]
     public void QuestionDataValidation_QuestionText()
     {
         Assert.IsInstanceOf<string>(question.Text);
     }
-    
+
     [Test]
     public void QuestionDataValidation_QuestionAnswer()
     {
         Assert.IsInstanceOf<string>(question.Answer);
     }
-    
+
     [Test]
     public void QuestionDataValidation_PossibleAnswers()
     {
@@ -33,14 +33,28 @@ public class QuestionTest
     [Test]
     public void QuestionEmptySringValidationTest_Text()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Question("", "Sir yes sir!", new List<string>())));
     }
 
     [Test]
     public void QuestionEmptySringValidationTest_Answer()
     {
-        Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Question("Swofford?", "", new List<string>())));
+    }
+
+    [Test]
+    public void QuestionEmptySringValidationTest_PossibleAnswers()
+    {
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+            new Question("Swofford?", "Sir Yes Sir", ["",""] )));
+    }
+
+    [Test]
+    public void QuestionAmountValidationTest_PossibleAnswers()
+    {
+        Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+            new Question("Swofford?", "Sir Yes Sir", ["aaaaaa"])));
     }
 }

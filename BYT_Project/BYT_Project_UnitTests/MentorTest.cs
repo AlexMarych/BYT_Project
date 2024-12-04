@@ -1,13 +1,13 @@
 ﻿using BYT_Project.Model;
-using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project_UnitTests
 {
     internal class MentorTest
     {
-        Mentor mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec");
+        Mentor mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", "dog@gmail.com",
+        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec", null);
 
         [Test]
         public void MentorDataValidationTest_Salary()
@@ -38,7 +38,13 @@ namespace BYT_Project_UnitTests
         {
             Assert.IsInstanceOf<string>(mentor.Surname);
         }
-        
+
+        [Test]
+        public void MentorDataValidationTest_Email()
+        {
+            Assert.IsInstanceOf<string>(mentor.Email);
+        }
+
         [Test]
         public void MentorDataValidationTest_DateOfBirth()
         {
@@ -60,9 +66,9 @@ namespace BYT_Project_UnitTests
         [Test]
         public void MentorEmptySringValidationTest_Specialization()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
-                new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "")));
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
+                new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", "dog@gmail.com",
+        new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "", null)));
         }
     }
 }

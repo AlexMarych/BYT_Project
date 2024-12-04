@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BYT_Project.Utils
+namespace BYT_Project.Utils.Validation
 {
-    public class CutsomValidator
+    public class CustomValidator
     {
         public static void Validate<T>(T obj)
         {

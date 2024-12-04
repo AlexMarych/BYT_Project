@@ -10,7 +10,12 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeTest()
         {
-            var var = new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), []);
+            var var = new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new()
+            {
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"})
+            });
             var list = ExtentManager.LoadExtent<Test>();
 
             Assert.That(list[^1], Is.EqualTo(var));
@@ -19,7 +24,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeSupport()
         {
-            var var = new Support(5, "adad", new(), "dasda", "ada", new(), new());
+            var var = new Support(5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), []);
             var list = ExtentManager.LoadExtent<Support>();
 
             Assert.That(list[^1], Is.EqualTo(var));
@@ -28,8 +33,13 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeStudentTest()
         {
-            Student student = new("Mike", "Wazowski", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 12000, 4);
-            Test test = new(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), []);
+            var student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 1000, []);
+            Test test = new(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new()
+            {
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
+                new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"})
+            });
 
             var var = new BYT_Project.Model.StudentTest(student, test, 5);
             var list = ExtentManager.LoadExtent<BYT_Project.Model.StudentTest>();
@@ -40,7 +50,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeStudent()
         {
-            var var = new Student("Mike", "Wazowski", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 12000, 4);
+            var var = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 1000, []);
             var list = ExtentManager.LoadExtent<Student>();
 
             Assert.That(list[^1], Is.EqualTo(var));
@@ -49,7 +59,11 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeQuestion()
         {
-            var var = new Question("Swofford?", "Sir yes sir!", []);
+            var var = new Question("Swofford?", "Sir yes sir!", new List<string>
+            {
+                "dadad",
+                "dadada"
+            });
             var list = ExtentManager.LoadExtent<Question>();
 
             Assert.That(list[^1], Is.EqualTo(var));
@@ -67,9 +81,9 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializePayment()
         {
-            var student = new Student("Mike", "Wazowski", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 12000, 4);
-            var level = Managment.Level.Top;
-            var difficultyLevel = Course.DifficultyLevel.Intermidiate;
+            var student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 1000, []);
+            var level = Level.Top;
+            var difficultyLevel = DifficultyLevel.Intermidiate;
             var course = new Text_Managment("field", new(), "ss", level, "middle", 12, new Dictionary<string, Mentor>(), difficultyLevel, []);
 
             var var = new Payment(new DateTime(2023, 11, 11), student, course);
@@ -81,7 +95,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializeMentor()
         {
-            var var = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec");
+            var var = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", "dog@gmail.com", new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec", null);
             var list = ExtentManager.LoadExtent<Mentor>();
 
             Assert.That(list[^1], Is.EqualTo(var));

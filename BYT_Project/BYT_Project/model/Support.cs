@@ -1,11 +1,16 @@
 ﻿using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
     public class Support : Employee
     {
         public List<Petition>? Petitions { get; set; }
-        public int SalaryBonus { get; set; }
+
+        [Range(0, int.MaxValue)]
+        public int SalaryBonus { get; }
+        private static readonly float SALARY_MULTIPLIER = 0.005f;
         private static List<Support> _extent = [];
 
         static Support()
@@ -13,9 +18,11 @@ namespace BYT_Project.Model
             _extent = ExtentManager.LoadExtent<Support>();
         }
 
-        public Support(int salary, string experience, DateTime dateOfEmployment, string name, string surname, DateTime dateOfBirth, DateTime createdAt) : base(salary, experience, dateOfEmployment, name, surname, dateOfBirth, createdAt)
+        public Support(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth, DateTime createdAt, List<Petition>? petitions) : base(salary, experience, dateOfEmployment, name, surname, email, dateOfBirth, createdAt)
         {
-            CutsomValidator.Validate(this);
+            Petitions = petitions;
+            SalaryBonus = (int)(Petitions.Count * SALARY_MULTIPLIER * Salary);
+            CustomValidator.Validate(this);
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Support>();

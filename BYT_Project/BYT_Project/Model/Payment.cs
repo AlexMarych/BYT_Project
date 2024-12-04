@@ -1,4 +1,5 @@
 using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model;
@@ -26,7 +27,7 @@ public class Payment
         Student = student;
         Course = course;
 
-        CutsomValidator.Validate(this);
+        CustomValidator.Validate(this);
 
         _extent.Add(this);
         ExtentManager.ClearExtent<Payment>();

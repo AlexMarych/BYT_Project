@@ -1,5 +1,5 @@
 ﻿using BYT_Project.Model;
-using BYT_Project.Utils;
+using BYT_Project.Utils.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -37,7 +37,7 @@ namespace BYT_Project_UnitTests.MultiAspect_Tests
         [Test]
         public void ManagmentEmptySringValidationTest_Field()
         {
-            Assert.Throws<ValidationException>(() => CutsomValidator.Validate(
+            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Text_Managment("", new(), "ss", level, "middle", 12, role, difficultyLevel, [])));
         }
     }
