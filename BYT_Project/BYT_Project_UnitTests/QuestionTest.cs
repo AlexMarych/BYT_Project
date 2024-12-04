@@ -12,7 +12,6 @@ public class QuestionTest
                 "dadada"
             });
 
-
     [Test]
     public void QuestionDataValidation_QuestionText()
     {

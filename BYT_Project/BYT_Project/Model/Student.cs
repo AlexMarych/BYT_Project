@@ -34,6 +34,14 @@ namespace BYT_Project.Model
             ExtentManager.SaveExtent(_extent);
         }
 
+        public void AssignPetition(Petition petition)
+        {
+            Petitions ??= [];
+            Petitions.Add(petition);
+            ExtentManager.ClearExtent<Student>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
         public override string ToString()
         {
             return base.ToString() + $" Balance: {Balance}, Gpa: {Gpa}";

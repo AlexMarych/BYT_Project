@@ -76,5 +76,25 @@ namespace BYT_Project.Utils
             if (File.Exists(path))
                 File.Delete(path);
         }
+
+        public static void Delete<T>(List<T> objects)
+        {
+            if (objects != null && objects.Count != 0)
+            {
+                var list = LoadExtent<T>();
+                objects.ForEach(x => list.Remove(x));
+                SaveExtent(list);
+            }
+        }
+
+        public static void Delete<T>(T obj)
+        {
+            if (obj != null)
+            {
+                var list = LoadExtent<T>();
+                list.Remove(obj);
+                SaveExtent(list);
+            }
+        }
     }
 }
