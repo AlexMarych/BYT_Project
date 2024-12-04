@@ -19,7 +19,7 @@ public class Question
     [MinLength(2)]
     public List<string> PossibleAnswers { get; set; }
 
-    private static List<Question> _extent = [];
+    private static List<Question> _extent { get; } = [];
 
     static Question()
     {
@@ -39,10 +39,23 @@ public class Question
         ExtentManager.SaveExtent(_extent);
     }
 
+    public static Question? Create(string text, string answer, List<string> possibleAnswers)
+    {
+        try
+        {
+            return new Question(text, answer, possibleAnswers);
+        }
+        catch (ValidationException)
+        {
+            return null;
+        }
+    }
+
     public static void Delete(List<Question> questions)
     {
         questions.ForEach(x => _extent.Remove(x));
-        ExtentManager.Delete(questions);
+        ExtentManager.ClearExtent<Question>();
+        ExtentManager.SaveExtent(_extent);
     }
 
     public override string ToString()

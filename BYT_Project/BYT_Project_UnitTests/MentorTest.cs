@@ -1,7 +1,7 @@
 ﻿using BYT_Project.Model;
 using BYT_Project.Utils.Validation;
-using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
+using BYT_Project.Utils.Exceptions;
 
 namespace BYT_Project_UnitTests
 {
@@ -88,6 +88,16 @@ namespace BYT_Project_UnitTests
             Assert.That(mentor.Chief, Is.EqualTo(Chief));
         }
 
+        [Test]
+        public void CreateValidMentorTest()
+        {
+            Assert.NotNull(Mentor.Create(10000, "Senior", new DateTime(2021, 06, 21), "Mikee", "Wazowskiy", "doga@gmail.com", new DateTime(1989, 06, 11), "spect"));
+        }
 
+        [Test]
+        public void CreateInvalidMentorTest()
+        {
+            Assert.Null(Mentor.Create(-100, "Senior", new DateTime(2021, 06, 21), "Mikee", "Wazowskiy", "doga@gmail.com", new DateTime(1989, 06, 11), "spect"));
+        }
     }
 }

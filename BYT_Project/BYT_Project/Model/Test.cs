@@ -14,7 +14,7 @@ public class Test
     [MinLength(2)]
     public List<Question> Questions { get; set; } = [];
 
-    private static List<Test> _extent = [];
+    public static List<Test> _extent { get; } = [];
 
     static Test()
     {
@@ -34,15 +34,24 @@ public class Test
         ExtentManager.SaveExtent(_extent);
     }
 
-    public static void Create(DateTime createdAt, TimeSpan solvingTime, List<Question> questions)
+    public static Test? Create(DateTime createdAt, TimeSpan solvingTime, List<Question> questions)
     {
-        new Test(createdAt, solvingTime, questions);
+        try
+        {
+            return new Test(createdAt, solvingTime, questions);
+        }
+        catch (ValidationException)
+        {
+            return null;
+        }
     }
 
     public static void Delete(Test test)
     {
         Question.Delete(test.Questions);
-        ExtentManager.Delete(test);
+        _extent.Remove(test);
+        ExtentManager.ClearExtent<Test>();
+        ExtentManager.SaveExtent(_extent);
     }
 
     public override string ToString()

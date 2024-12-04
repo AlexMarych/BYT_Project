@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BYT_Project.Utils;
+using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 
 namespace BYT_Project.Model
@@ -21,8 +22,6 @@ namespace BYT_Project.Model
         {
             Specialization = specialization;
             Chief = mentor;
-
-
 
             CustomValidator.Validate(this);
 
@@ -51,12 +50,19 @@ namespace BYT_Project.Model
         public void AssignChief(Mentor mentor)
         {
             if (mentor == this) throw new RecursiveChiefException();
-            this.Chief = mentor;    
+            Chief = mentor;
         }
-        
-        public static void Create(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth, string specialization)
+
+        public static Mentor? Create(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth, string specialization)
         {
-            new Mentor(salary, experience, dateOfEmployment, name, surname, email, dateOfBirth, DateTime.Now, specialization, null);
+            try
+            {
+                return new Mentor(salary, experience, dateOfEmployment, name, surname, email, dateOfBirth, DateTime.Now, specialization, null);
+            }
+            catch (ValidationException e)
+            {
+                return null;
+            }
         }
     }
 }

@@ -1,12 +1,27 @@
 ﻿using BYT_Project.Model;
 using BYT_Project.Utils;
-using static BYT_Project.Model.Course;
-using static BYT_Project.Model.Managment;
 
 Console.WriteLine("Class extents");
 
-Test test1 = new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new());
+List<Question> questions =
+[
+    new("Swofford?", "Sir yes sir!", ["ewew", "dadad"]),
+            new("Swofford?", "Sir yes sir!", ["ewew", "dadad"]),
+            new("Swofford?", "Sir yes sir!", ["ewew", "dadad"])
+];
 
-ExtentManager.ClearExtent<Test>();
+Test? test = Test.Create(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), questions);
 
-Test test2 = new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new());
+var testListBefore = Test._extent;
+//var questionListBefore = ExtentManager.LoadExtent<Question>();
+
+Console.WriteLine(testListBefore.Contains(test));
+
+
+Test.Delete(test);
+
+var testListAfter = Test._extent;
+//var questionListAfter = ExtentManager.LoadExtent<Question>();
+
+
+Console.WriteLine(!testListAfter.Contains(test));

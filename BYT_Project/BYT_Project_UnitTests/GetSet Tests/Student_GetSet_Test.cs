@@ -1,7 +1,6 @@
-using System.ComponentModel.DataAnnotations;
 using BYT_Project.Model;
 
-namespace BYT_Project_UnitTests.MultiAspect_Tests.GetSet_Tests;
+namespace BYT_Project_UnitTests.GetSet_Tests;
 
 public class Student_GetSet_Test
 {

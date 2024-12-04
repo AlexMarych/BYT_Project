@@ -1,6 +1,6 @@
 using BYT_Project.Model;
 
-namespace BYT_Project_UnitTests.MultiAspect_Tests.GetSet_Tests;
+namespace BYT_Project_UnitTests.GetSet_Tests;
 
 public class Petition_GetSet_Test
 {
