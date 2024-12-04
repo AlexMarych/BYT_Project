@@ -1,5 +1,6 @@
 ﻿using BYT_Project.Model;
 using BYT_Project.Utils.Validation;
+using BYT_Project.Utils;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project_UnitTests
@@ -70,5 +71,23 @@ namespace BYT_Project_UnitTests
                 new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", "dog@gmail.com",
         new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "", null)));
         }
+
+        [Test]
+        public void MentorRecursiveCiefValidationTest()
+        {
+            Assert.Throws<RecursiveChiefException>(() => mentor.AssignChief(mentor));
+        }
+
+        [Test]
+        public void MentorRelationValidationTest_SetChief()
+        {
+            Mentor Chief = new Mentor(10000, "Senior", new DateTime(2021, 06, 21), "Mikee", "Wazowskiy", "doga@gmail.com",
+            new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spect", null);
+
+            mentor.AssignChief(Chief);
+            Assert.That(mentor.Chief, Is.EqualTo(Chief));
+        }
+
+
     }
 }

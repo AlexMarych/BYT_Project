@@ -48,5 +48,11 @@ namespace BYT_Project.Model
         {
             return HashCode.Combine(Id);
         }
+
+        public virtual void SetRole(string role, Mentor mentor)
+        {
+            this.Mentors.Add(role, mentor);
+            
+        }
     }
 }

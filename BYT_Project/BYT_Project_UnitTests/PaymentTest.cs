@@ -45,4 +45,12 @@ public class PaymentTest
         Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Payment(new DateTime(2023, 11, 11), student, null)));
     }
+
+    [Test]
+    public void PaymentRelationValidationTest_PaymentDate()
+    {
+        DateTime date = new DateTime(1999, 12, 31);
+        payment.SetPaymentDate(date);
+        Assert.That(payment.PaymentDate, Is.EqualTo(date));
+    }
 }
