@@ -52,9 +52,16 @@ public class Payment
     }
 
 
-    public static Payment Create(Student student, Course course)
+    public static Payment? Create(Student student, Course course)
     {
-        return new Payment(null, student, course);
+        try
+        {
+            return new Payment(null, student, course);
+        }
+        catch (ValidationException e)
+        {
+            return null;
+        }
     }
 
     public void SetPaymentDate(DateTime paymentDate)
