@@ -6,7 +6,8 @@ namespace BYT_Project_UnitTests
 {
     internal class PetitionTest
     {
-        Petition petition = new Petition("petition", Petition.StatusType.Opened);
+        static Student student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 1000, []);
+        Petition petition = new Petition(student,"petition", Petition.StatusType.Opened);
 
         [Test]
         public void PetitionDataValidationTest_Text()
@@ -22,7 +23,7 @@ namespace BYT_Project_UnitTests
         public void PetitionEmptySringValidationTest_Text()
         {
             Assert.Throws<ValidationException>(() => CustomValidator.Validate(
-                new Petition("", Petition.StatusType.Opened)));
+                new Petition(student,"", Petition.StatusType.Opened)));
         }
     }
 }

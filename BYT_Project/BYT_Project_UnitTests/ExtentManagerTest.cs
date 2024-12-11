@@ -72,7 +72,8 @@ namespace BYT_Project_UnitTests
         [Test]
         public void SerializeAndDeserializePetition()
         {
-            var var = new Petition("petition", Petition.StatusType.Opened);
+            var student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 1000, []);
+            var var = new Petition(student,"petition", Petition.StatusType.Opened);
             var list = ExtentManager.LoadExtent<Petition>();
 
             Assert.That(list[^1], Is.EqualTo(var));

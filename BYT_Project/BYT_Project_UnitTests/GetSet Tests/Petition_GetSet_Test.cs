@@ -4,7 +4,8 @@ namespace BYT_Project_UnitTests.GetSet_Tests;
 
 public class Petition_GetSet_Test
 {
-    static Petition petition = new Petition("Sample Petition", Petition.StatusType.Opened);
+    static Student student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), new DateTime(2020, 08, 11), 1000, []);
+    static Petition petition = new Petition(student,"Sample Petition", Petition.StatusType.Opened);
 
     [Test]
     public void Text_Test()
