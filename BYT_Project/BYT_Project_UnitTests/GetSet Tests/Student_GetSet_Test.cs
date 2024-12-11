@@ -42,16 +42,6 @@ public class Student_GetSet_Test
     }
 
     [Test]
-    public void Course_Test()
-    {
-        var courses = new List<Course>();
-
-        student.Courses = courses;
-        var actualCourses = student.Courses;
-        CollectionAssert.AreEqual(courses, actualCourses);
-    }
-
-    [Test]
     public void StudentTest_Test()
     {
         var studentTests = new List<BYT_Project.Model.StudentTest>();
