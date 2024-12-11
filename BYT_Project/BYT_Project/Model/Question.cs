@@ -1,4 +1,5 @@
 using BYT_Project.Utils;
+using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
@@ -18,6 +19,8 @@ public class Question
     [NoEmptyStrings]
     [MinLength(2)]
     public List<string> PossibleAnswers { get; set; }
+
+    public Test Test { get; set; }
 
     private static List<Question> _extent { get; } = [];
 
@@ -56,6 +59,18 @@ public class Question
         questions.ForEach(x => _extent.Remove(x));
         ExtentManager.ClearExtent<Question>();
         ExtentManager.SaveExtent(_extent);
+    }
+
+    public void AddTest(Test test)
+    {
+        try {
+            if (this.Test != null) throw new ReverseConnectionException();
+            this.Test = test;
+
+            if (test.Questions.Contains(this)) throw new ReverseConnectionException();
+            test.Questions.Add(this);
+        }
+        catch  (ReverseConnectionException e) { }
     }
 
     public override string ToString()
