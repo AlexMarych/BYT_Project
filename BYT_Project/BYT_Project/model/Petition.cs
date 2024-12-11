@@ -2,6 +2,7 @@
 using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BYT_Project.Model
 {
@@ -19,7 +20,7 @@ namespace BYT_Project.Model
             Closed
         }
         public StatusType Status { get; set; }
-
+        
         public Student Student { get; set; }
 
         private static List<Petition> _extent = [];
@@ -42,9 +43,16 @@ namespace BYT_Project.Model
             ExtentManager.SaveExtent(_extent);
         }
 
-        public static void Create(string text, StatusType status)
+        public static Petition? Create(Student student, string text, StatusType status)
         {
-            new Petition(null, text, status);
+            try
+            {
+                return new Petition(student, text, status);
+            }
+            catch (ValidationException e)
+            {
+                return null;
+            }
         }
 
         public void AddStudent(Student student)

@@ -25,5 +25,18 @@ namespace BYT_Project_UnitTests
             Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Petition(student,"", Petition.StatusType.Opened)));
         }
+
+        [Test]
+        public void CreatePetitionValidTest()
+        {
+            Assert.NotNull(Petition.Create(student ,"bubu", Petition.StatusType.Opened));
+        }
+        
+        [Test]
+        public void CreatePetitionInvalidTest()
+        {
+            Assert.Null(Petition.Create(null ,null, Petition.StatusType.Opened));
+        }
+        
     }
 }
