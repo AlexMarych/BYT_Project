@@ -47,13 +47,19 @@ namespace BYT_Project.Model
             new Petition(null, text, status);
         }
 
-        public void AddStudent(Student student)
+        public bool AddStudent(Student student)
         {
-            if (Student != null) throw new ReverseConnectionException();
-            this.Student = student;
+            Student = student;
+            student.Petitions ??= [];
 
-            if (student.Petitions.Contains(this)) throw new ReverseConnectionException();
-            student.Petitions.Add(this);
+            if (student.Petitions.Contains(this))
+                return false;
+
+            student.AssignPetition(this);
+            ExtentManager.ClearExtent<Petition>();
+            ExtentManager.SaveExtent(_extent);
+
+            return true;
         }
 
         public override string ToString()
