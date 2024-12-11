@@ -1,4 +1,5 @@
 using BYT_Project.Utils;
+using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
@@ -52,6 +53,16 @@ public class Test
         _extent.Remove(test);
         ExtentManager.ClearExtent<Test>();
         ExtentManager.SaveExtent(_extent);
+    }
+
+    public void AddQuestion(Question question)
+    {
+        try
+        {
+            if (this.Questions.Contains(question)) throw new ReverseConnectionException();
+            Questions.Add(question);
+            question.AddTest(this);
+        } catch (ReverseConnectionException e) { }
     }
 
     public override string ToString()
