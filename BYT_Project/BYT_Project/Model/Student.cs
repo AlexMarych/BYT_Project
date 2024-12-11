@@ -1,4 +1,5 @@
 using BYT_Project.Utils;
+using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,7 +13,7 @@ namespace BYT_Project.Model
         [Range(0, 5)]
         public int Gpa { get; }
         public List<Petition>? Petitions { get; set; }
-        public List<Course>? Courses { get; set; }
+        public List<Payment>? Payments { get; set; }
         public List<StudentTest>? StudentTests { get; set; }
         private static List<Student> _extent = [];
 
@@ -56,6 +57,18 @@ namespace BYT_Project.Model
         public override int GetHashCode()
         {
             return HashCode.Combine(Id);
+        }
+
+        public void AddPayment(Course course)
+        {
+            try
+            {
+                Payment pay = Payment.Create(this, course);
+                Payments.Add(pay);
+                if (course.Payments.Contains(pay)) throw new ReverseConnectionException();
+                course.AddPayment(this);
+            }
+            catch (ReverseConnectionException e) { }
         }
     }
 }

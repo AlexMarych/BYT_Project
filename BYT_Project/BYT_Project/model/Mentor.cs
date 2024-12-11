@@ -47,10 +47,25 @@ namespace BYT_Project.Model
             return HashCode.Combine(base.GetHashCode(), Id);
         }
 
-        public void AssignChief(Mentor mentor)
+        public void AddChief(Mentor mentor)
         {
-            if (mentor == this) throw new RecursiveChiefException();
-            Chief = mentor;
+            try
+            {
+                if (mentor == this) throw new RecursiveChiefException();
+                Chief = mentor;
+            }
+            catch(RecursiveChiefException e) { }
+        }
+
+        public void AddCourse(Course course, string role)
+        {
+            try
+            {
+                if (Courses.Contains(course)) throw new ReverseConnectionException();
+                Courses.Add(course);
+                course.AddMentor(role, this);
+            }
+            catch (ReverseConnectionException e) { }
         }
 
         public static Mentor? Create(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth, string specialization)

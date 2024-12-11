@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BYT_Project.Utils.Exceptions;
+using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
 {
@@ -21,6 +22,8 @@ namespace BYT_Project.Model
 
         [Range(0, int.MaxValue)]
         public int Price { get; set; }
+
+        public List<Payment> Payments { get; set; }
         public IDictionary<string, Mentor>? Mentors { get; set; }
 
         public List<Test>? Tests { get; set; }
@@ -49,10 +52,29 @@ namespace BYT_Project.Model
             return HashCode.Combine(Id);
         }
 
-        public virtual void SetRole(string role, Mentor mentor)
+        public virtual void AddMentor(string role, Mentor mentor)
         {
-            this.Mentors.Add(role, mentor);
-            
+            try
+            {
+                if (Mentors.ContainsKey(role)) throw new ReverseConnectionException();
+
+                this.Mentors.Add(role, mentor);
+
+                mentor.AddCourse(this, role);
+            }
+            catch (ReverseConnectionException e) { }
+        }
+
+        public void AddPayment(Student student)
+        {
+            try
+            {
+                Payment pay = Payment.Create(student, this);
+                this.Payments.Add(pay);
+                if (student.Payments.Contains(pay)) throw new ReverseConnectionException();
+                student.AddPayment(this);
+            }
+            catch (ReverseConnectionException e) { }
         }
     }
 }

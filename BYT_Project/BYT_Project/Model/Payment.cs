@@ -52,13 +52,15 @@ public class Payment
     }
 
 
-    public static void Create(Student student, Course course)
+    public static Payment Create(Student student, Course course)
     {
-        new Payment(null, student, course);
+        return new Payment(null, student, course);
     }
 
     public void SetPaymentDate(DateTime paymentDate)
     {
         this.PaymentDate = paymentDate;
     }
+
+
 }
