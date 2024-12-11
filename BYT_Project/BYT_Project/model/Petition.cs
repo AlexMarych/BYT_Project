@@ -1,4 +1,5 @@
 ﻿using BYT_Project.Utils;
+using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
@@ -18,6 +19,9 @@ namespace BYT_Project.Model
             Closed
         }
         public StatusType Status { get; set; }
+
+        public Student Student { get; set; }
+
         private static List<Petition> _extent = [];
 
         static Petition()
@@ -25,8 +29,9 @@ namespace BYT_Project.Model
             _extent = ExtentManager.LoadExtent<Petition>();
         }
 
-        public Petition(string text, StatusType status)
+        public Petition(Student student ,string text, StatusType status)
         {
+            this.Student = student; 
             Text = text;
             Status = status;
 
@@ -35,6 +40,20 @@ namespace BYT_Project.Model
             _extent.Add(this);
             ExtentManager.ClearExtent<Petition>();
             ExtentManager.SaveExtent(_extent);
+        }
+
+        public static void Create(string text, StatusType status)
+        {
+            new Petition(null, text, status);
+        }
+
+        public void AddStudent(Student student)
+        {
+            if (Student != null) throw new ReverseConnectionException();
+            this.Student = student;
+
+            if (student.Petitions.Contains(this)) throw new ReverseConnectionException();
+            student.Petitions.Add(this);
         }
 
         public override string ToString()
