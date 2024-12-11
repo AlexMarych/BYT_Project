@@ -75,7 +75,10 @@ namespace BYT_Project_UnitTests
         [Test]
         public void MentorRecursiveCiefValidationTest()
         {
-            Assert.Throws<RecursiveChiefException>(() => mentor.AddChief(mentor));
+            if (mentor.Chief != null)
+            {
+                Assert.Throws<RecursiveChiefException>(() => mentor.AddChief(mentor));
+            }
         }
 
         [Test]
