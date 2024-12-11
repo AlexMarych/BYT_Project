@@ -16,7 +16,7 @@ public class Question_GetSet_Test
         string expText = "What the **** are you even doing here?";
         question.Text = expText;
         var actualText = question.Text;
-        
+
         Assert.AreEqual(expText, actualText);
     }
 
@@ -27,18 +27,22 @@ public class Question_GetSet_Test
         string expAnswer = "Sir, I got lost on the way to college sir!";
         question.Answer = expAnswer;
         var actualAnswer = question.Answer;
-        
+
         Assert.AreEqual(expAnswer, actualAnswer);
     }
 
     [Test]
     public void ListOfAnswers_Test()
     {
-        var answers = new List<string>();
+        var answers = new List<string>
+            {
+                "dadad",
+                "dadada"
+            };
         question.PossibleAnswers = answers;
         var actualAnswers = question.PossibleAnswers;
-        
+
         CollectionAssert.AreEqual(answers, actualAnswers);
     }
-    
+
 }
