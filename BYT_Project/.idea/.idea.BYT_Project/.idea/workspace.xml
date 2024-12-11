@@ -9,6 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="784134ff-0c32-400a-8666-c687b19f283f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BYT_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BYT_Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BYT_Project_UnitTests/CourseTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BYT_Project_UnitTests/CourseTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BYT_Project_UnitTests/GetSet Tests/Student_GetSet_Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BYT_Project_UnitTests/GetSet Tests/Student_GetSet_Test.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BYT_Project_UnitTests/MentorTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BYT_Project_UnitTests/MentorTest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +22,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2ofLGvc51gLevfU2zhZPz4UW06N" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -34,7 +37,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Ilya",
+    "git-widget-placeholder": "dev",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -49,6 +52,7 @@
     ]
   }
 }]]></component>
+  <component name="RunManager" selected="1bd3c6f4-1e85-4b88-993f-396541b9a691" />
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -58,6 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1731255592701</updated>
       <workItem from="1731255594500" duration="4079000" />
+      <workItem from="1733954575222" duration="692000" />
     </task>
     <servers />
   </component>
