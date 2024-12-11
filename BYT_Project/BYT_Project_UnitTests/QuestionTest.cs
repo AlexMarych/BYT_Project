@@ -57,4 +57,22 @@ public class QuestionTest
         Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new Question("Swofford?", "Sir Yes Sir", ["aaaaaa"])));
     }
+    
+    [Test]
+    public void CreateQuestionValidTest()
+    {
+        Assert.NotNull(Question.Create("bubub", "bubu_correct", new List<string>
+        {
+            "bubububu?",
+            "bubububububububu?"
+        }));
+    }
+        
+    [Test]
+    public void CreateQuestionInvalidTest()
+    {
+        Assert.Null(Question.Create(null, null, []));
+    }
+    
+    
 }

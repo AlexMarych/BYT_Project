@@ -1,5 +1,4 @@
 ﻿using BYT_Project.Utils;
-using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,7 +30,7 @@ namespace BYT_Project.Model
 
         public Petition(Student student ,string text, StatusType status)
         {
-            this.Student = student; 
+            Student = student;
             Text = text;
             Status = status;
 
@@ -42,9 +41,16 @@ namespace BYT_Project.Model
             ExtentManager.SaveExtent(_extent);
         }
 
-        public static void Create(string text, StatusType status)
+        public static Petition? Create(Student student, string text, StatusType status)
         {
-            new Petition(null, text, status);
+            try
+            {
+                return new Petition(student, text, status);
+            }
+            catch (ValidationException)
+            {
+                return null;
+            }
         }
 
         public bool AddStudent(Student student)
