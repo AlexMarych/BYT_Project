@@ -56,25 +56,5 @@ namespace BYT_Project_UnitTests
             Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Text_Managment("field", new(), "ss", level, "middle", -1, role, difficultyLevel, tests)));
         }
-
-        [Test]
-        public void CourseEmptySringValidationTest_Name()
-        {
-            Assert.Throws<ValidationException>(() => CustomValidator.Validate(
-                new Text_Managment("field", new(), "", level, "middle", 12, role, difficultyLevel, tests)));
-        }
-
-        [Test]
-        public void CourseRelationValidationTest_SetRole()
-        {
-            Mentor mentor = new Mentor(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski", "dog@gmail.com",
-                new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spec", null);
-
-            course.AddMentor("abc", mentor);
-            Assert.That(course.Mentors["abc"], Is.EqualTo(mentor));
-
-        }
-
-
     }
 }

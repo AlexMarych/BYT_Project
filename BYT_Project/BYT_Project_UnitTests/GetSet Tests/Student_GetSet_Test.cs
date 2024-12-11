@@ -41,16 +41,6 @@ public class Student_GetSet_Test
         CollectionAssert.AreEqual(petitons, actualPetitions);
     }
 
-    // [Test]
-    // public void Course_Test()
-    // {
-    //     var courses = new List<Course>();
-    //
-    //     student.Courses = courses;
-    //     var actualCourses = student.Courses;
-    //     CollectionAssert.AreEqual(courses, actualCourses);
-    // }
-
     [Test]
     public void StudentTest_Test()
     {
