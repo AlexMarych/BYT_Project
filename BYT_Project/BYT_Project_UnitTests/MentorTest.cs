@@ -75,7 +75,7 @@ namespace BYT_Project_UnitTests
         [Test]
         public void MentorRecursiveCiefValidationTest()
         {
-            Assert.Throws<RecursiveChiefException>(() => mentor.AssignChief(mentor));
+            Assert.Throws<RecursiveChiefException>(() => mentor.AddChief(mentor));
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace BYT_Project_UnitTests
             Mentor Chief = new Mentor(10000, "Senior", new DateTime(2021, 06, 21), "Mikee", "Wazowskiy", "doga@gmail.com",
             new DateTime(1989, 06, 11), new DateTime(2021, 06, 22), "spect", null);
 
-            mentor.AssignChief(Chief);
+            mentor.AddChief(Chief);
             Assert.That(mentor.Chief, Is.EqualTo(Chief));
         }
 
