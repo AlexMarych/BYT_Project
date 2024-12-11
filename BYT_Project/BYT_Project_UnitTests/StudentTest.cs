@@ -1,4 +1,5 @@
 using BYT_Project.Model;
+using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 
@@ -59,7 +60,8 @@ public class StudentTest
             new DateTime(2020, 08, 11), -1, [])));
     }
 
-
-
-
+    [Test]
+    public void StudentAddPaymentReverseException()
+    {
+    }
 }

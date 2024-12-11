@@ -35,12 +35,20 @@ namespace BYT_Project.Model
             ExtentManager.SaveExtent(_extent);
         }
 
-        public void AssignPetition(Petition petition)
+        public bool AssignPetition(Petition petition)
         {
             Petitions ??= [];
+
+            if (petition.Student == this || Petitions.Contains(petition))
+                return false;
+
             Petitions.Add(petition);
+            petition.AddStudent(this);
+
             ExtentManager.ClearExtent<Student>();
             ExtentManager.SaveExtent(_extent);
+
+            return true;
         }
 
         public override string ToString()
@@ -59,16 +67,21 @@ namespace BYT_Project.Model
             return HashCode.Combine(Id);
         }
 
-        public void AddPayment(Course course)
+        public bool AddPayment(Course course)
         {
-            try
-            {
-                Payment pay = Payment.Create(this, course);
-                Payments.Add(pay);
-                if (course.Payments.Contains(pay)) throw new ReverseConnectionException();
-                course.AddPayment(this);
-            }
-            catch (ReverseConnectionException e) { }
+            Payment pay = Payment.Create(this, course);
+
+            Payments ??= [];
+
+            if (course.Payments.Contains(pay) || Payments.Contains(pay))
+                return false;
+
+            Payments.Add(pay);
+            course.AddPayment(this);
+            ExtentManager.ClearExtent<Student>();
+            ExtentManager.SaveExtent(_extent);
+
+            return true;
         }
     }
 }

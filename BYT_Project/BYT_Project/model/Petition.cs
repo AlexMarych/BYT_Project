@@ -1,8 +1,6 @@
 ﻿using BYT_Project.Utils;
-using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 
 namespace BYT_Project.Model
 {
@@ -20,7 +18,7 @@ namespace BYT_Project.Model
             Closed
         }
         public StatusType Status { get; set; }
-        
+
         public Student Student { get; set; }
 
         private static List<Petition> _extent = [];
@@ -32,7 +30,7 @@ namespace BYT_Project.Model
 
         public Petition(Student student ,string text, StatusType status)
         {
-            this.Student = student; 
+            Student = student;
             Text = text;
             Status = status;
 
@@ -49,19 +47,25 @@ namespace BYT_Project.Model
             {
                 return new Petition(student, text, status);
             }
-            catch (ValidationException e)
+            catch (ValidationException)
             {
                 return null;
             }
         }
 
-        public void AddStudent(Student student)
+        public bool AddStudent(Student student)
         {
-            if (Student != null) throw new ReverseConnectionException();
-            this.Student = student;
+            Student = student;
+            student.Petitions ??= [];
 
-            if (student.Petitions.Contains(this)) throw new ReverseConnectionException();
-            student.Petitions.Add(this);
+            if (student.Petitions.Contains(this))
+                return false;
+
+            student.AssignPetition(this);
+            ExtentManager.ClearExtent<Petition>();
+            ExtentManager.SaveExtent(_extent);
+
+            return true;
         }
 
         public override string ToString()

@@ -1,4 +1,5 @@
-﻿using BYT_Project.Utils.Exceptions;
+﻿using BYT_Project.Utils;
+using BYT_Project.Utils.Exceptions;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project.Model
@@ -11,7 +12,7 @@ namespace BYT_Project.Model
         [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
 
-        public enum DifficultyLevel 
+        public enum DifficultyLevel
         {
             Beginner,
             Intermidiate,
@@ -52,29 +53,34 @@ namespace BYT_Project.Model
             return HashCode.Combine(Id);
         }
 
-        public virtual void AddMentor(string role, Mentor mentor)
+        public virtual bool AddMentor(string role, Mentor mentor)
         {
-            try
-            {
-                if (Mentors.ContainsKey(role)) throw new ReverseConnectionException();
+            Mentors ??= new Dictionary<string, Mentor>();
+            mentor.Courses ??= [];
 
-                this.Mentors.Add(role, mentor);
+            if (mentor.Courses.Contains(this) || Mentors.ContainsKey(role))
+                return false;
 
-                mentor.AddCourse(this, role);
-            }
-            catch (ReverseConnectionException e) { }
+            Mentors.Add(role, mentor);
+            mentor.AddCourse(this, role);
+
+            return true;
         }
 
-        public void AddPayment(Student student)
+        public virtual bool AddPayment(Student student)
         {
-            try
-            {
-                Payment pay = Payment.Create(student, this);
-                this.Payments.Add(pay);
-                if (student.Payments.Contains(pay)) throw new ReverseConnectionException();
-                student.AddPayment(this);
-            }
-            catch (ReverseConnectionException e) { }
+            Payment pay = Payment.Create(student, this);
+
+            Payments ??= [];
+            student.Payments ??= [];
+
+            if (Payments.Contains(pay) || student.Payments.Contains(pay))
+                return false;
+
+            Payments.Add(pay);
+            student.AddPayment(this);
+
+            return true;
         }
     }
 }

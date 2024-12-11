@@ -49,23 +49,25 @@ namespace BYT_Project.Model
 
         public void AddChief(Mentor mentor)
         {
-            try
-            {
-                if (mentor == this) throw new RecursiveChiefException();
-                Chief = mentor;
-            }
-            catch(RecursiveChiefException e) { }
+            if (mentor == this)
+                throw new RecursiveChiefException();
+            Chief = mentor;
         }
 
-        public void AddCourse(Course course, string role)
+        public bool AddCourse(Course course, string role)
         {
-            try
-            {
-                if (Courses.Contains(course)) throw new ReverseConnectionException();
-                Courses.Add(course);
-                course.AddMentor(role, this);
-            }
-            catch (ReverseConnectionException e) { }
+            Courses ??= [];
+            course.Mentors = new Dictionary<string, Mentor>();
+
+            if (course.Mentors.ContainsKey(role) || Courses.Contains(course))
+                return false;
+
+            Courses.Add(course);
+            course.AddMentor(role, this);
+            ExtentManager.ClearExtent<Mentor>();
+            ExtentManager.SaveExtent(_extent);
+
+            return true;
         }
 
         public static Mentor? Create(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth, string specialization)
@@ -74,7 +76,7 @@ namespace BYT_Project.Model
             {
                 return new Mentor(salary, experience, dateOfEmployment, name, surname, email, dateOfBirth, DateTime.Now, specialization, null);
             }
-            catch (ValidationException e)
+            catch (ValidationException)
             {
                 return null;
             }

@@ -1,4 +1,5 @@
 ﻿using BYT_Project.Model;
+using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
 

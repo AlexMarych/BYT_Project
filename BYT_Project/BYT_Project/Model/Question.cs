@@ -61,16 +61,18 @@ public class Question
         ExtentManager.SaveExtent(_extent);
     }
 
-    public void AddTest(Test test)
+    public bool AddTest(Test test)
     {
-        try {
-            if (this.Test != null) throw new ReverseConnectionException();
-            this.Test = test;
+        Test = test;
 
-            if (test.Questions.Contains(this)) throw new ReverseConnectionException();
-            test.Questions.Add(this);
-        }
-        catch  (ReverseConnectionException e) { }
+        if (test.Questions.Contains(this))
+            return false;
+
+        test.AddQuestion(this);
+        ExtentManager.ClearExtent<Question>();
+        ExtentManager.SaveExtent(_extent);
+
+        return true;
     }
 
     public override string ToString()
