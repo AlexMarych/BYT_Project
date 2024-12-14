@@ -1,6 +1,7 @@
 ﻿using BYT_Project.Utils;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BYT_Project.Model
 {
@@ -27,6 +28,41 @@ namespace BYT_Project.Model
             _extent.Add(this);
             ExtentManager.ClearExtent<Support>();
             ExtentManager.SaveExtent(_extent);
+        }
+
+        public static Support? Create(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth)  
+        {
+            try
+            {
+                return new Support(salary, experience, dateOfEmployment, name, surname, email, dateOfBirth, DateTime.Now, null);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static void Delete(Support support)
+        {
+            _extent.Remove(support);
+            ExtentManager.ClearExtent<Support>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
+        public bool AddPetition(Petition petition)
+        {
+            Petitions ??= [];
+
+            if (petition.Support == this || Petitions.Contains(petition))
+                return false;
+
+            Petitions.Add(petition);
+            petition.AddSupport(this);
+
+            ExtentManager.ClearExtent<Student>();
+            ExtentManager.SaveExtent(_extent);
+
+            return true;
         }
 
         public override bool Equals(object? obj)

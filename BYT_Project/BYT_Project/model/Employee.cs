@@ -20,6 +20,8 @@ namespace BYT_Project.Model
             DateOfEmployment = dateOfEmployment;
         }
 
+        
+
         public override string ToString()
         {
             return base.ToString() + $" Salary: {Salary}, Experience: {Experience}, DateOfEmployment: {DateOfEmployment.ToString("yyyy-MM-dd HH:mm:ss")}";

@@ -47,4 +47,16 @@ public class StudentTest
     {
         return HashCode.Combine(Student, Test);
     }
+
+    public static StudentTest? Create(Student student, Test test, int grade) 
+    {
+        try
+        {
+            return new StudentTest(student, test , grade);
+        }
+        catch 
+        {
+            return null;
+        }
+    }
 }

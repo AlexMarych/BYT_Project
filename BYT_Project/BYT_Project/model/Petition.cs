@@ -20,6 +20,7 @@ namespace BYT_Project.Model
         public StatusType Status { get; set; }
 
         public Student Student { get; set; }
+        public Support Support { get; set; }
 
         private static List<Petition> _extent = [];
 
@@ -53,6 +54,13 @@ namespace BYT_Project.Model
             }
         }
 
+        public static void Delete(Petition petition)
+        {
+            _extent.Remove(petition);
+            ExtentManager.ClearExtent<Petition>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
         public bool AddStudent(Student student)
         {
             Student = student;
@@ -62,6 +70,21 @@ namespace BYT_Project.Model
                 return false;
 
             student.AssignPetition(this);
+            ExtentManager.ClearExtent<Petition>();
+            ExtentManager.SaveExtent(_extent);
+
+            return true;
+        }
+
+        public bool AddSupport(Support support)
+        {
+            Support = support;
+            support.Petitions ??= [];
+
+            if (support.Petitions.Contains(this))
+                return false;
+
+            support.AddPetition(this);
             ExtentManager.ClearExtent<Petition>();
             ExtentManager.SaveExtent(_extent);
 

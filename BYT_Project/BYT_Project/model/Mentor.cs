@@ -81,5 +81,17 @@ namespace BYT_Project.Model
                 return null;
             }
         }
+
+        public static void Delete(Mentor mentor)
+        {
+            _extent.Remove(mentor);
+            ExtentManager.ClearExtent<Mentor>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
+        public static void DeleteChief(Mentor mentor)
+        {
+            mentor.Chief = null;
+        }
     }
 }

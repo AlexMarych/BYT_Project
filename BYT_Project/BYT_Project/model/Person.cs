@@ -27,6 +27,7 @@ namespace BYT_Project.Model
             CreatedAt = createdAt;
         }
 
+
         public override string ToString()
         {
             return $"Id: {Id}, Name: {Name}, Surname: {Surname}, DateOfBirth: {DateOfBirth.ToString("yyyy-MM-dd")}, CreatedAt: {CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")}";

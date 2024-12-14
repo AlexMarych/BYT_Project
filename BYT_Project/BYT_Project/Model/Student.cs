@@ -51,6 +51,25 @@ namespace BYT_Project.Model
             return true;
         }
 
+        public static Student? Create(string name, string surname, string email, DateTime dateOfBirth, int balance)
+        {
+            try
+            {
+                return new Student(name,surname,email,dateOfBirth,DateTime.Now,balance, null);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static void Delete(Student student)
+        {
+            _extent.Remove(student);
+            ExtentManager.ClearExtent<Student>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
         public override string ToString()
         {
             return base.ToString() + $" Balance: {Balance}, Gpa: {Gpa}";
@@ -71,13 +90,30 @@ namespace BYT_Project.Model
         {
             Payment pay = Payment.Create(this, course);
 
-            Payments ??= [];
+            StudentTests ??= [];
 
             if (course.Payments.Contains(pay) || Payments.Contains(pay))
                 return false;
 
             Payments.Add(pay);
             course.AddPayment(this);
+            ExtentManager.ClearExtent<Student>();
+            ExtentManager.SaveExtent(_extent);
+
+            return true;
+        }
+
+        public bool AddStudentTest(Test test, int grade)
+        {
+            StudentTest studentTest = StudentTest.Create(this, test, grade);
+
+            Payments ??= [];
+
+            if (test.StudentTests.Contains(studentTest) || StudentTests.Contains(studentTest))
+                return false;
+
+            StudentTests.Add(studentTest);
+            test.AddStudentTest(this, grade);
             ExtentManager.ClearExtent<Student>();
             ExtentManager.SaveExtent(_extent);
 

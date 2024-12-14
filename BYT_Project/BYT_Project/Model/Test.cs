@@ -15,6 +15,8 @@ public class Test
     [MinLength(2)]
     public List<Question> Questions { get; set; } = [];
 
+    public List<StudentTest?> StudentTests { get; set; }
+
     public static List<Test> _extent { get; } = [];
 
     static Test()
@@ -47,6 +49,18 @@ public class Test
         }
     }
 
+    public static void Modifiy(Test test)
+    {
+
+        Test modifiyable = _extent.First(x => x.Id == test.Id);
+        
+        _extent.Remove(modifiyable);
+        _extent.Add(test);
+
+        ExtentManager.ClearExtent<Test>();
+        ExtentManager.SaveExtent(_extent);
+    }
+
     public static void Delete(Test test)
     {
         Question.Delete(test.Questions);
@@ -65,6 +79,22 @@ public class Test
         } catch (ReverseConnectionException e) { }
     }
 
+    public bool AddStudentTest(Student student, int grade)
+    {
+        StudentTest studentTest = StudentTest.Create(student, this, grade);
+
+        StudentTests ??= [];
+        student.StudentTests ??= [];
+
+        if (StudentTests.Contains(studentTest) || student.StudentTests.Contains(studentTest))
+            return false;
+
+        StudentTests.Add(studentTest);
+        student.AddStudentTest(this, grade);
+
+        return true;
+    }
+
     public override string ToString()
     {
         return $"Id: {Id}, CreatedAt: {CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")}, SolvingTime: {SolvingTime}";
@@ -80,4 +110,5 @@ public class Test
     {
         return HashCode.Combine(Id);
     }
+
 }
