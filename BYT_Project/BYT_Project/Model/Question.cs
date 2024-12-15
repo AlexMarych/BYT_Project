@@ -54,6 +54,18 @@ public class Question
         }
     }
 
+    public static void Modifiy(Question question)
+    {
+
+        Question modifiyable = _extent.First(x => x.Id == question.Id);
+
+        _extent.Remove(modifiyable);
+        _extent.Add(question);
+
+        ExtentManager.ClearExtent<Question>();
+        ExtentManager.SaveExtent(_extent);
+    }
+
     public static void Delete(List<Question> questions)
     {
         questions.ForEach(x => _extent.Remove(x));

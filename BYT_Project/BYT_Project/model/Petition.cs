@@ -54,6 +54,17 @@ namespace BYT_Project.Model
             }
         }
 
+        public static void Modifiy(Petition petition)
+        {
+
+            Petition modifiyable = _extent.First(x => x.Id == petition.Id);
+
+            _extent.Remove(modifiyable);
+            _extent.Add(petition);
+
+            ExtentManager.ClearExtent<Petition>();
+            ExtentManager.SaveExtent(_extent);
+        }
         public static void Delete(Petition petition)
         {
             _extent.Remove(petition);

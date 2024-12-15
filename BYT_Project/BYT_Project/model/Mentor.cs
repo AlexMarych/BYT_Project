@@ -82,6 +82,18 @@ namespace BYT_Project.Model
             }
         }
 
+        public static void Modifiy(Mentor mentor)
+        {
+
+            Mentor modifiyable = _extent.First(x => x.Id == mentor.Id);
+
+            _extent.Remove(modifiyable);
+            _extent.Add(mentor);
+
+            ExtentManager.ClearExtent<Mentor>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
         public static void Delete(Mentor mentor)
         {
             _extent.Remove(mentor);
