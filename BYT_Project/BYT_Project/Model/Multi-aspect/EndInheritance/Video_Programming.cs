@@ -30,6 +30,37 @@ namespace BYT_Project.Model
             ExtentManager.SaveExtent(_extent);
         }
 
+        public static Video_Programming? Create(TimeSpan overallDuration, int videosNumber, string technologyName, List<string> frameworkList, string name, int price, DifficultyLevel level)
+        {
+            try
+            {
+                return new Video_Programming( overallDuration, videosNumber, technologyName, frameworkList, name, price, null, level, null);
+            }
+            catch (ValidationException)
+            {
+                return null;
+            }
+        }
+
+        public static void Modifiy(Video_Programming video_Programming)
+        {
+
+            Video_Programming modifiyable = _extent.First(x => x.Id == video_Programming.Id);
+
+            _extent.Remove(modifiyable);
+            _extent.Add(video_Programming);
+
+            ExtentManager.ClearExtent<Video_Programming>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
+        public static void Delete(Video_Programming video_Programming)
+        {
+            _extent.Remove(video_Programming);
+            ExtentManager.ClearExtent<Video_Programming>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Video_Programming programming &&

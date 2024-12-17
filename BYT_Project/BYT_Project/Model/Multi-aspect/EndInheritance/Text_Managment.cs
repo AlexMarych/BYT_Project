@@ -30,6 +30,37 @@ namespace BYT_Project.Model
             ExtentManager.SaveExtent(_extent);
         }
 
+        public static Text_Managment? Create(string content, TimeSpan familiarizationTime, string field, Level level, string name, int price, DifficultyLevel difficultyLevel)
+        {
+            try
+            {
+                return new Text_Managment(content, familiarizationTime, field, level, name, price, null, difficultyLevel, null);
+            }
+            catch (ValidationException)
+            {
+                return null;
+            }
+        }
+
+        public static void Modifiy(Text_Managment text_Managment)
+        {
+
+            Text_Managment modifiyable = _extent.First(x => x.Id == text_Managment.Id);
+
+            _extent.Remove(modifiyable);
+            _extent.Add(text_Managment);
+
+            ExtentManager.ClearExtent<Text_Managment>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
+        public static void Delete(Text_Managment text_Managment)
+        {
+            _extent.Remove(text_Managment);
+            ExtentManager.ClearExtent<Text_Managment>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Text_Managment managment &&

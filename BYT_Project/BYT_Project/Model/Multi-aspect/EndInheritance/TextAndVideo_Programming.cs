@@ -1,6 +1,7 @@
 ﻿using BYT_Project.Utils;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
+using static BYT_Project.Model.Managment;
 
 namespace BYT_Project.Model
 {
@@ -36,6 +37,36 @@ namespace BYT_Project.Model
             ExtentManager.SaveExtent(_extent);
         }
 
+        public static TextAndVideo_Programming? Create(string content, TimeSpan familiarizationTime, TimeSpan overallDuration, int videosNumber, string technologyName, List<string> frameworkList, string name, int price, DifficultyLevel level)
+        {
+            try
+            {
+                return new TextAndVideo_Programming(content, familiarizationTime, overallDuration, videosNumber,technologyName, frameworkList, name, price, null, level, null);
+            }
+            catch (ValidationException)
+            {
+                return null;
+            }
+        }
+
+        public static void Modifiy(TextAndVideo_Programming textAndVideo_Programming)
+        {
+
+            TextAndVideo_Programming modifiyable = _extent.First(x => x.Id == textAndVideo_Programming.Id);
+
+            _extent.Remove(modifiyable);
+            _extent.Add(textAndVideo_Programming);
+
+            ExtentManager.ClearExtent<TextAndVideo_Programming>();
+            ExtentManager.SaveExtent(_extent);
+        }
+
+        public static void Delete(TextAndVideo_Programming textAndVideo_Programming)
+        {
+            _extent.Remove(textAndVideo_Programming);
+            ExtentManager.ClearExtent<TextAndVideo_Programming>();
+            ExtentManager.SaveExtent(_extent);
+        }
         public override bool Equals(object? obj)
         {
             return obj is TextAndVideo_Programming programming &&
