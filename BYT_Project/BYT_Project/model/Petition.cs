@@ -22,20 +22,23 @@ namespace BYT_Project.Model
         public Student Student { get; set; }
         public Support Support { get; set; }
 
-        public static List<Petition> _extent = [];
+        private static List<Petition> _extent = [];
+        private static int _staticId;
 
         static Petition()
         {
             _extent = ExtentManager.LoadExtent<Petition>();
         }
 
-        public Petition(Student student ,string text, StatusType status)
+        public Petition(Student student, string text, StatusType status)
         {
             Student = student;
             Text = text;
             Status = status;
 
             CustomValidator.Validate(this);
+
+            Id = ++_staticId;
 
             _extent.Add(this);
             ExtentManager.ClearExtent<Petition>();
@@ -54,7 +57,7 @@ namespace BYT_Project.Model
             }
         }
 
-        public static void Modifiy(Petition petition)
+        public static void Modify(Petition petition)
         {
 
             Petition modifiyable = _extent.First(x => x.Id == petition.Id);

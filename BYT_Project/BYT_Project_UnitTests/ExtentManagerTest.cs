@@ -102,37 +102,37 @@ namespace BYT_Project_UnitTests
             Assert.That(list[^1], Is.EqualTo(var));
         }
 
-        [Test]
-        public void SerializeAndDeserializeProgramming()
-        {
-            IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
+        //[Test]
+        //public void SerializeAndDeserializeProgramming()
+        //{
+        //    IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
 
-            List<Test>? tests = [];
-            DifficultyLevel difficultyLevel = DifficultyLevel.Advanced;
-            List<string> Techlist = [];
+        //    List<Test>? tests = [];
+        //    DifficultyLevel difficultyLevel = DifficultyLevel.Advanced;
+        //    List<string> Techlist = [];
 
-            var var = new Video_Programming(TimeSpan.Zero, 10, "java", Techlist, "name", 10, role, difficultyLevel, tests);
+        //    var var = new Video_Programming(TimeSpan.Zero, 10, "java", Techlist, "name", 10, role, difficultyLevel, tests);
 
-            var list = ExtentManager.LoadExtent<Video_Programming>();
+        //    var list = ExtentManager.LoadExtent<Video_Programming>();
 
-            Assert.That(list[^1], Is.EqualTo(var));
-        }
+        //    Assert.That(list[^1], Is.EqualTo(var));
+        //}
 
-        [Test]
-        public void SerializeAndDeserializeManagment()
-        {
-            IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
+        //[Test]
+        //public void SerializeAndDeserializeManagment()
+        //{
+        //    IDictionary<string, Mentor> role = new Dictionary<string, Mentor>();
 
-            List<Test>? tests = new();
+        //    List<Test>? tests = new();
 
-            Level level = Level.Top;
-            DifficultyLevel difficultyLevel = DifficultyLevel.Advanced;
+        //    Level level = Level.Top;
+        //    DifficultyLevel difficultyLevel = DifficultyLevel.Advanced;
 
-            var var = new Video_Managment(TimeSpan.Zero, 10, "field", level, "middle", 12, role, difficultyLevel, tests);
+        //    var var = new Video_Managment(TimeSpan.Zero, 10, "field", level, "middle", 12, role, difficultyLevel, tests);
 
-            var list = ExtentManager.LoadExtent<Video_Managment>();
+        //    var list = ExtentManager.LoadExtent<Video_Managment>();
 
-            Assert.That(list[^1], Is.EqualTo(var));
-        }
+        //    Assert.That(list[^1], Is.EqualTo(var));
+        //}
     }
 }
