@@ -102,5 +102,50 @@ namespace BYT_Project_UnitTests
         {
             Assert.Null(Mentor.Create(-100, "Senior", new DateTime(2021, 06, 21), "Mikee", "Wazowskiy", "doga@gmail.com", new DateTime(1989, 06, 11), "spect"));
         }
+
+        [Test]
+        public void ModifyMentorTest()
+        {
+            
+            //Fix this one 
+            Mentor? testMentor = Mentor.Create(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
+                "dog@gmail.com",
+                new DateTime(1989, 06, 11), "Programming");
+            
+            var before = Mentor._extent.Count;
+            
+            Mentor.Modifiy(testMentor);
+
+            var after = Mentor._extent.Count;
+            Assert.That(after == before);
+
+
+        }
+        
+
+        [Test]
+
+        public void DeleteMentorTest()
+        {
+            Mentor? testMentor = Mentor.Create(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
+                "dog@gmail.com",
+                new DateTime(1989, 06, 11), "Programming");
+            
+            var before = Mentor._extent.Count;
+            
+            Mentor.Delete(testMentor);
+
+            var after = Mentor._extent.Count;
+            Assert.That(after == before - 1);
+
+        }
+
+        [Test]
+
+        public void DeleteChiefTest()
+        {
+            Assert.Null(mentor.Chief);
+        }
+        
     }
 }
