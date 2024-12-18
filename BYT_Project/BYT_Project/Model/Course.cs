@@ -28,6 +28,8 @@ namespace BYT_Project.Model
         public IDictionary<string, Mentor>? Mentors { get; set; }
 
         public List<Test>? Tests { get; set; }
+        private static int _staticId;
+
         protected Course(string name, int price, IDictionary<string, Mentor>? mentors, DifficultyLevel difficulty, List<Test>? tests)
         {
             Name = name;
@@ -35,6 +37,8 @@ namespace BYT_Project.Model
             Mentors = mentors;
             difficultyLevel = difficulty;
             Tests = tests;
+
+            Id = ++_staticId;
         }
 
         public override string ToString()

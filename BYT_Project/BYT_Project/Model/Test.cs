@@ -18,6 +18,7 @@ public class Test
     public List<StudentTest?> StudentTests { get; set; }
 
     public static List<Test> _extent { get; } = [];
+    private static int _staticId;
 
     static Test()
     {
@@ -29,6 +30,7 @@ public class Test
         CreatedAt = createdAt;
         SolvingTime = solvingTime;
         Questions = questions;
+        Id = ++_staticId;
 
         CustomValidator.Validate(this);
 
@@ -49,11 +51,11 @@ public class Test
         }
     }
 
-    public static void Modifiy(Test test)
+    public static void Modify(Test test)
     {
 
         Test modifiyable = _extent.First(x => x.Id == test.Id);
-        
+
         _extent.Remove(modifiyable);
         _extent.Add(test);
 
@@ -69,14 +71,15 @@ public class Test
         ExtentManager.SaveExtent(_extent);
     }
 
-    public void AddQuestion(Question question)
+    public bool AddQuestion(Question question)
     {
-        try
-        {
-            if (this.Questions.Contains(question)) throw new ReverseConnectionException();
-            Questions.Add(question);
-            question.AddTest(this);
-        } catch (ReverseConnectionException e) { }
+        if (Questions.Contains(question)) 
+            return false;
+
+        Questions.Add(question);
+        question.AddTest(this);
+
+        return true;
     }
 
     public bool AddStudentTest(Student student, int grade)
