@@ -46,7 +46,7 @@ namespace BYT_Project_UnitTests
         {
             Petition? testPetition = Petition.Create(student,"petition", Petition.StatusType.Opened);
             var before = Petition._extent.Count();
-            Petition.Modifiy(testPetition);
+            Petition.Modify(testPetition);
             var after = Petition._extent.Count();
             Assert.That(after == before);
         }
