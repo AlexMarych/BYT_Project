@@ -107,7 +107,6 @@ namespace BYT_Project_UnitTests
         public void ModifyMentorTest()
         {
             
-            //Fix this one 
             Mentor? testMentor = Mentor.Create(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
                 "dog@gmail.com",
                 new DateTime(1989, 06, 11), "Programming");

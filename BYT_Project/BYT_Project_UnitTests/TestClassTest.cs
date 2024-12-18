@@ -93,10 +93,13 @@ public class TestClassTest
         Test? test = Test.Create(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), questions);
         var before = Test._extent.Count;
 
-        Test.Modify(new Test(new DateTime(2023, 12, 13), new TimeSpan(12, 30, 0), questions));
+        var changer = new Test(new DateTime(2023, 12, 13), new TimeSpan(12, 30, 0), questions);
+        changer.Id = test.Id;
+
+        Test.Modify(changer);
         var after = Test._extent.Count;
 
-        Assert.That(after == before);
+        Assert.That(after != before);
     }
 
     [Test]

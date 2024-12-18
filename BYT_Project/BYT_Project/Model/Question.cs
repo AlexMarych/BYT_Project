@@ -22,7 +22,7 @@ public class Question
 
     public Test Test { get; set; }
 
-    private static List<Question> _extent { get; } = [];
+    public static List<Question> _extent { get; } = [];
     private static int _staticId;
 
     static Question()
