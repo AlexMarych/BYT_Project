@@ -86,4 +86,42 @@ public class TestClassTest
 
         Assert.That(testBeforeCount > testAfterCount && questionBeforeCount > questionAfterCount);
     }
+
+    [Test]
+    public void TestModify()
+    {
+        Test? test = Test.Create(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), questions);
+        var before = Test._extent.Count;
+
+        Test.Modify(new Test(new DateTime(2023, 12, 13), new TimeSpan(12, 30, 0), questions));
+        var after = Test._extent.Count;
+
+        Assert.That(after == before);
+    }
+
+    [Test]
+    public void TestDelete()
+    {
+        Test? test = Test.Create(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), questions);
+
+        var before = Test._extent.Count;
+
+        Test.Delete(test);
+
+        var after = Test._extent.Count;
+
+        Assert.True(before > after);
+    }
+
+    [Test]
+    public void TestAddQuestion()
+    {
+        Assert.IsTrue(test.AddQuestion(new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad" })));
+    }
+
+    [Test]
+    public void TestAddStudentTestn()
+    {
+        //Assert.IsTrue(test.AddStudentTest(new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad" })));
+    }
 }

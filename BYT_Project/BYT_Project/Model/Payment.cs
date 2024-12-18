@@ -16,6 +16,7 @@ public class Payment
     public Course Course { get; set; }
 
     private static List<Payment> _extent = [];
+    private static int _staticId;
 
     static Payment()
     {
@@ -27,6 +28,7 @@ public class Payment
         PaymentDate = paymentDate;
         Student = student;
         Course = course;
+        TransactionId = ++_staticId;
 
         CustomValidator.Validate(this);
 

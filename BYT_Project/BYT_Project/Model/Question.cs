@@ -23,6 +23,7 @@ public class Question
     public Test Test { get; set; }
 
     private static List<Question> _extent { get; } = [];
+    private static int _staticId;
 
     static Question()
     {
@@ -38,6 +39,8 @@ public class Question
         CustomValidator.Validate(this);
 
         _extent.Add(this);
+
+        Id = ++_staticId;
         ExtentManager.ClearExtent<Question>();
         ExtentManager.SaveExtent(_extent);
     }

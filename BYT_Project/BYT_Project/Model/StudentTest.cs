@@ -7,6 +7,8 @@ namespace BYT_Project.Model;
 [Serializable]
 public class StudentTest
 {
+    public int Id { get; set; }
+
     [Required]
     public Student Student { get; set; }
 
@@ -17,7 +19,7 @@ public class StudentTest
     public int Grade { get; set; }
 
     private static List<StudentTest> _extent = [];
-
+    private static int _staticId;
     static StudentTest()
     {
         _extent = ExtentManager.LoadExtent<StudentTest>();
@@ -32,20 +34,10 @@ public class StudentTest
         CustomValidator.Validate(this);
 
         _extent.Add(this);
+
+        Id = ++_staticId;
         ExtentManager.ClearExtent<StudentTest>();
         ExtentManager.SaveExtent(_extent);
-    }
-
-    public override bool Equals(object? obj)
-    {
-        return obj is StudentTest test &&
-               EqualityComparer<Student>.Default.Equals(Student, test.Student) &&
-               EqualityComparer<Test>.Default.Equals(Test, test.Test);
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Student, Test);
     }
 
     public static StudentTest? Create(Student student, Test test, int grade) 
@@ -58,5 +50,16 @@ public class StudentTest
         {
             return null;
         }
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is StudentTest test &&
+               Id == test.Id;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Id);
     }
 }

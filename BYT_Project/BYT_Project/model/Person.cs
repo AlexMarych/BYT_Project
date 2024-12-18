@@ -17,6 +17,7 @@ namespace BYT_Project.Model
         public string Email { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; }
+        private static int _staticId;
 
         protected Person(string name, string surname, string email, DateTime dateOfBirth, DateTime createdAt)
         {
@@ -25,6 +26,8 @@ namespace BYT_Project.Model
             Email = email;
             DateOfBirth = dateOfBirth;
             CreatedAt = createdAt;
+
+            Id = ++_staticId;
         }
 
 
