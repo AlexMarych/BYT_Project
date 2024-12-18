@@ -53,4 +53,23 @@ public class PaymentTest
         payment.SetPaymentDate(date);
         Assert.That(payment.PaymentDate, Is.EqualTo(date));
     }
+
+    [Test]
+    public void CreatePaymentValidTest()
+    {
+        Assert.NotNull(Payment.Create(student, course));
+    }
+        
+    [Test]
+    public void CreatePaymentInValidTest()
+    {
+        Assert.Null(Payment.Create(null ,null));
+    }
+
+    [Test]
+    public void PaymentDateTest()
+    {
+        Assert.That(payment.PaymentDate, Is.EqualTo(payment.PaymentDate));
+    }
+    
 }

@@ -22,7 +22,7 @@ namespace BYT_Project.Model
         public Student Student { get; set; }
         public Support Support { get; set; }
 
-        private static List<Petition> _extent = [];
+        public static List<Petition> _extent = [];
 
         static Petition()
         {

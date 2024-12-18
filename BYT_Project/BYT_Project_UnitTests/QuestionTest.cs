@@ -6,12 +6,15 @@ namespace BYT_Project_UnitTests;
 
 public class QuestionTest
 {
+    
+    //something went wrong, needed to be fixed
     private Question question = new Question("Swofford?", "Sir yes sir!", new List<string>
             {
                 "dadad",
                 "dadada"
             });
-
+    private Test test = new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new List<Question> {});
+    
     [Test]
     public void QuestionDataValidation_QuestionText()
     {
@@ -72,6 +75,45 @@ public class QuestionTest
     public void CreateQuestionInvalidTest()
     {
         Assert.Null(Question.Create(null, null, []));
+    }
+
+    [Test]
+    public void ModifyQuestionTest()
+    {
+        Question? testQuestions = Question.Create("Swofford?", "Sir yes sir!", new List<string>
+        {
+            "dadad",
+            "dadada"
+        });
+
+        var before = Question._extent.Count();
+        Question.Modifiy(testQuestions);
+        var after = Question._extent.Count();
+        
+        Assert.That(after == before);
+    }
+    
+    [Test]
+    public void DeleteQuestionTest()
+    {
+        Question? testQuestions = Question.Create("Swofford?", "Sir yes sir!", new List<string>
+        {
+            "dadad",
+            "dadada"
+        });
+
+        var before = Question._extent.Count();
+        Question.Delete(new List<Question> { testQuestions });
+        var after = Question._extent.Count();
+        
+        Assert.That(after == before-1);
+    }
+    
+    [Test]
+    public void AddTest_Test()
+    {
+        question.AddTest(test);
+        Assert.That(question.Test, Is.EqualTo(test));
     }
     
     
