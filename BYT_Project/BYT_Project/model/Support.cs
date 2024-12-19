@@ -42,13 +42,12 @@ namespace BYT_Project.Model
             }
         }
 
-        public static void Modifiy(Support support)
+        public static void Modify(Support support)
         {
 
             Support modifiyable = _extent.First(x => x.Id == support.Id);
 
             _extent.Remove(modifiyable);
-            _extent.Add(support);
 
             ExtentManager.ClearExtent<Support>();
             ExtentManager.SaveExtent(_extent);

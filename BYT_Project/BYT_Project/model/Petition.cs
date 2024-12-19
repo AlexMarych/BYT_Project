@@ -63,7 +63,6 @@ namespace BYT_Project.Model
             Petition modifiyable = _extent.First(x => x.Id == petition.Id);
 
             _extent.Remove(modifiyable);
-            _extent.Add(petition);
 
             ExtentManager.ClearExtent<Petition>();
             ExtentManager.SaveExtent(_extent);

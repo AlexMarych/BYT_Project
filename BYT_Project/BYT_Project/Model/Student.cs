@@ -69,7 +69,6 @@ namespace BYT_Project.Model
             Student modifiyable = _extent.First(x => x.Id == student.Id);
 
             _extent.Remove(modifiyable);
-            _extent.Add(student);
 
             ExtentManager.ClearExtent<Student>();
             ExtentManager.SaveExtent(_extent);
@@ -104,6 +103,7 @@ namespace BYT_Project.Model
 
             StudentTests ??= [];
             Payments ??= [];
+            course.Payments ??= [];
 
             if (course.Payments.Contains(pay) || Payments.Contains(pay))
                 return false;
@@ -122,6 +122,7 @@ namespace BYT_Project.Model
 
             Payments ??= [];
             StudentTests ??= [];
+            test.StudentTests ??= [];
 
             if (test.StudentTests.Contains(studentTest) || StudentTests.Contains(studentTest))
                 return false;

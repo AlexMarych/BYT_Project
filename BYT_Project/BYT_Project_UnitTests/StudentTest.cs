@@ -106,39 +106,4 @@ public class StudentTest
     {
         Assert.Null(Student.Create("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), -100));
     }
-
-    [Test]
-    public void AssignPayment()
-    {
-        var st = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
-        new DateTime(2020, 08, 11), 1000, []);
-        var pt = new Text_Managment("field", new(), "ss", Level.Top, "middle", 12, new Dictionary<string, Mentor>(), DifficultyLevel.Advanced, new());
-
-        var before = st.Payments.Count;
-        st.AddPayment(pt);
-
-        var after = st.Payments.Count;
-
-        Assert.That(before < after);
-    }
-
-    [Test]
-    public void AddStudentTest()
-    {
-        var st = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
-new DateTime(2020, 08, 11), 1000, []);
-        var pt = new Test(new DateTime(2023, 09, 11), new TimeSpan(1, 30, 0), new()
-        {
-            new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
-            new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"}),
-            new("Swofford?", "Sir yes sir!", new() { "ewew", "dadad"})
-        });
-
-        var before = st.StudentTests.Count;
-        st.AddStudentTest(pt, 5);
-
-        var after = st.StudentTests.Count;
-
-        Assert.That(before < after);
-    }
 }

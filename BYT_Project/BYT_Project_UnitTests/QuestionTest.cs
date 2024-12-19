@@ -98,7 +98,15 @@ public class QuestionTest
         });
 
         var before = Question._extent.Count();
-        Question.Modifiy(testQuestions);
+
+        Question? changer = Question.Create("Swofford?", "Sir yes sir!", new List<string>
+        {
+            "dadad",
+            "dadada"
+        });
+        changer.Id = testQuestions.Id;
+
+        Question.Modify(changer);
         var after = Question._extent.Count();
 
         Assert.That(after == before);
