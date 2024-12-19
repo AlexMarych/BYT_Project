@@ -108,12 +108,15 @@ namespace BYT_Project_UnitTests
         {
             
             Mentor? testMentor = Mentor.Create(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
-                "dog@gmail.com",
-                new DateTime(1989, 06, 11), "Programming");
+                "dog@gmail.com", new DateTime(1989, 06, 11), "Programming");
             
             var before = Mentor._extent.Count;
             
-            Mentor.Modifiy(testMentor);
+            var changer = Mentor.Create(1000, "Senior", new DateTime(2021, 06, 21), "Mike", "Wazowski",
+                "dog@gmail.com", new DateTime(1989, 06, 11), "Busta");
+            changer.Id = testMentor.Id;
+
+            Mentor.Modify(changer);
 
             var after = Mentor._extent.Count;
             Assert.That(after == before);

@@ -99,7 +99,7 @@ public class TestClassTest
         Test.Modify(changer);
         var after = Test._extent.Count;
 
-        Assert.That(after != before);
+        Assert.That(after == before);
     }
 
     [Test]

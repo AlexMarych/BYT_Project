@@ -2,6 +2,9 @@ using BYT_Project.Model;
 using BYT_Project.Utils.Exceptions;
 using BYT_Project.Utils.Validation;
 using System.ComponentModel.DataAnnotations;
+using static BYT_Project.Model.Course;
+using static BYT_Project.Model.Managment;
+using System.Data;
 
 namespace BYT_Project_UnitTests;
 
@@ -15,7 +18,7 @@ public class StudentTest
     {
         Assert.IsInstanceOf<string>(student.Name);
     }
-    
+
     [Test]
     public void StudentValidationTest_Surname()
     {
@@ -61,7 +64,46 @@ public class StudentTest
     }
 
     [Test]
-    public void StudentAddPaymentReverseException()
+    public void AssignPetition()
     {
+        var st = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
+            new DateTime(2020, 08, 11), 1000, []);
+
+        var pt = new Petition(student, "petition", Petition.StatusType.Opened);
+
+        var before = st.Petitions.Count;
+        st.AssignPetition(pt);
+
+        var after = st.Petitions.Count;
+
+        Assert.That(before < after);
+    }
+
+    [Test]
+    public void Delete()
+    {
+        var st = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
+            new DateTime(2020, 08, 11), 1000, []);
+
+        var before = Student._extent.Count;
+
+        Student.Delete(st);
+
+        var after = Student._extent.Count;
+
+        Assert.That(before > after);
+    }
+
+    [Test]
+    public void CreateNotNull()
+    {
+        Assert.NotNull(new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
+            new DateTime(2020, 08, 11), 1000, []));
+    }
+
+    [Test]
+    public void CreateNull()
+    {
+        Assert.Null(Student.Create("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21), -100));
     }
 }

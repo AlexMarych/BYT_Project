@@ -57,7 +57,6 @@ public class Test
         Test modifiyable = _extent.First(x => x.Id == test.Id);
 
         _extent.Remove(modifiyable);
-        _extent.Add(test);
 
         ExtentManager.ClearExtent<Test>();
         ExtentManager.SaveExtent(_extent);
@@ -94,6 +93,8 @@ public class Test
 
         StudentTests.Add(studentTest);
         student.AddStudentTest(this, grade);
+        ExtentManager.ClearExtent<Test>();
+        ExtentManager.SaveExtent(_extent);
 
         return true;
     }
