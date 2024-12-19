@@ -1,5 +1,6 @@
 ﻿using BYT_Project.Model;
 using BYT_Project.Utils.Validation;
+using NUnit.Framework.Internal;
 using System.ComponentModel.DataAnnotations;
 
 namespace BYT_Project_UnitTests
@@ -67,6 +68,44 @@ namespace BYT_Project_UnitTests
         {
             Assert.Throws<ValidationException>(() => CustomValidator.Validate(
                 new Support(-5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), [])));
+        }
+
+
+        [Test]
+        public void CreateNull()
+        {
+            Assert.Null(Support.Create(5, "adad", new(), "da", "dada", "dog@gmail.com", new()));
+        }
+
+        [Test]
+        public void AddPetition()
+        {
+            var student = new Student("Mike", "Wazowski", "dog@gmail.com", new DateTime(2003, 07, 21),
+                new DateTime(2020, 08, 11), 1000, []);
+            var sup = new Support(5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), []);
+            var pt = new Petition(student, "petition", Petition.StatusType.Opened);
+
+            var before = sup.Petitions.Count;
+            sup.AddPetition(pt);
+
+            var after = sup.Petitions.Count;
+
+            Assert.That(before < after);
+        }
+
+
+        [Test]
+        public void Delete()
+        {
+            var sup = new Support(5, "adad", new(), "da", "dada", "dog@gmail.com", new(), new(), []);
+
+            var before = Support._extent.Count;
+
+            Support.Delete(sup);
+
+            var after = Support._extent.Count;
+
+            Assert.That(before > after);
         }
     }
 }

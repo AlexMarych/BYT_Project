@@ -53,4 +53,17 @@ public class StudentTestClassTest
         Assert.Throws<ValidationException>(() => CustomValidator.Validate(
             new BYT_Project.Model.StudentTest(student, null, 3)));
     }
+
+
+    [Test]
+    public void CreateNotNull()
+    {
+        Assert.NotNull(BYT_Project.Model.StudentTest.Create(student, test, 4));
+    }
+    
+    [Test]
+    public void CreateNull()
+    {
+        Assert.Null(BYT_Project.Model.StudentTest.Create(student, test, 10));
+    }
 }

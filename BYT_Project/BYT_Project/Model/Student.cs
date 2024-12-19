@@ -12,10 +12,10 @@ namespace BYT_Project.Model
 
         [Range(0, 5)]
         public int Gpa { get; }
-        public List<Petition>? Petitions { get; set; }
-        public List<Payment>? Payments { get; set; }
-        public List<StudentTest>? StudentTests { get; set; }
-        private static List<Student> _extent = [];
+        public List<Petition> Petitions { get; set; } = [];
+        public List<Payment> Payments { get; set; } = [];
+        public List<StudentTest> StudentTests { get; set; } = [];
+        public static List<Student> _extent = [];
 
         static Student()
         {
@@ -63,7 +63,7 @@ namespace BYT_Project.Model
             }
         }
 
-        public static void Modifiy(Student student)
+        public static void Modify(Student student)
         {
 
             Student modifiyable = _extent.First(x => x.Id == student.Id);
@@ -103,6 +103,7 @@ namespace BYT_Project.Model
             Payment pay = Payment.Create(this, course);
 
             StudentTests ??= [];
+            Payments ??= [];
 
             if (course.Payments.Contains(pay) || Payments.Contains(pay))
                 return false;
@@ -120,6 +121,7 @@ namespace BYT_Project.Model
             StudentTest studentTest = StudentTest.Create(this, test, grade);
 
             Payments ??= [];
+            StudentTests ??= [];
 
             if (test.StudentTests.Contains(studentTest) || StudentTests.Contains(studentTest))
                 return false;

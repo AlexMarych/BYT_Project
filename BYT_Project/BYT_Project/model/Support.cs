@@ -7,12 +7,12 @@ namespace BYT_Project.Model
 {
     public class Support : Employee
     {
-        public List<Petition>? Petitions { get; set; }
+        public List<Petition> Petitions { get; set; } = [];
 
         [Range(0, int.MaxValue)]
         public int SalaryBonus { get; }
         private static readonly float SALARY_MULTIPLIER = 0.005f;
-        private static List<Support> _extent = [];
+        public static List<Support> _extent = [];
 
         static Support()
         {
