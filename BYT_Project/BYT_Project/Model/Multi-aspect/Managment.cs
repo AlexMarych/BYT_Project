@@ -33,5 +33,6 @@ namespace BYT_Project.Model
         {
             return HashCode.Combine(base.GetHashCode(), Id);
         }
+
     }
 }

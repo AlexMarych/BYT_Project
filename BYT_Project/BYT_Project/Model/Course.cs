@@ -1,6 +1,7 @@
 ﻿using BYT_Project.Utils;
 using BYT_Project.Utils.Exceptions;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace BYT_Project.Model
 {
@@ -40,6 +41,74 @@ namespace BYT_Project.Model
 
             Id = ++_staticId;
         }
+
+        public static Course? CourseFactoryCreate<A, B, C, D, E, F>(
+            A spec1, B spec2, C spec3, D spec4, E spec5, F spec6,
+            string name, int price, DifficultyLevel level)
+        {
+            
+            if (spec1 is string technologyName && spec2 is List<string> frameworkList)
+            {
+                return CreateProgrammingCourse(spec3, spec4, spec5, spec6, technologyName, frameworkList, name, price, level);
+            }
+            
+            else if (spec1 is string domainName && spec2 is Managment.Level managementLevel)
+            {
+                return CreateManagementCourse(spec3, spec4, spec5, spec6, domainName, managementLevel, name, price, level);
+            }
+
+            return null;
+        }
+        
+        private static Course? CreateProgrammingCourse<C, D, E, F>(
+            C spec3, D spec4, E spec5, F spec6,
+            string technologyName, List<string> frameworkList,
+            string name, int price, DifficultyLevel level)
+        {
+            if (spec3 is TimeSpan duration && spec4 is int videoCount)
+            {
+                return Video_Programming.Create(duration, videoCount, technologyName, frameworkList, name, price, level);
+            }
+            else if (spec3 is string textContent && spec4 is TimeSpan readingDuration)
+            {
+                if (spec5 is TimeSpan combinedDuration && spec6 is int combinedVideoCount)
+                {
+                    return TextAndVideo_Programming.Create(
+                        textContent, readingDuration, combinedDuration, combinedVideoCount,
+                        technologyName, frameworkList, name, price, level);
+                }
+                return Text_Programming.Create(textContent, readingDuration, technologyName, frameworkList, name, price, level);
+            }
+
+            return null;
+        }
+
+        
+        private static Course? CreateManagementCourse<C, D, E, F>(
+            C spec3, D spec4, E spec5, F spec6,
+            string domainName, Managment.Level level,
+            string name, int price, DifficultyLevel difficultyLevel)
+        {
+            if (spec3 is TimeSpan duration && spec4 is int videoCount)
+            {
+                return Video_Managment.Create(duration, videoCount, domainName, level, name, price, difficultyLevel);
+            }
+            else if (spec3 is string textContent && spec4 is TimeSpan readingDuration)
+            {
+                if (spec5 is TimeSpan combinedDuration && spec6 is int combinedVideoCount)
+                {
+                    return TextAndVideo_Managment.Create(
+                        textContent, readingDuration, combinedDuration, combinedVideoCount,
+                        domainName, level, name, price, difficultyLevel);
+                }
+                return Text_Managment.Create(textContent, readingDuration, domainName, level, name, price, difficultyLevel);
+            }
+
+            return null;
+        }
+
+
+
 
         public override string ToString()
         {
@@ -86,5 +155,20 @@ namespace BYT_Project.Model
 
             return true;
         }
+
+        public virtual bool AddTest(Test test)
+        {
+            Tests ??= new List<Test>();
+            
+            if (test.course == this || Tests.Contains(test))
+                return false;
+
+            Tests.Add(test);
+            test.AddCourse(this);
+
+            return true;
+
+        }
+
     }
 }

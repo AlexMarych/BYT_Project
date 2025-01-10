@@ -30,11 +30,12 @@ public class Question
         _extent = ExtentManager.LoadExtent<Question>();
     }
 
-    public Question(string text, string answer, List<string> possibleAnswers)
+    public Question(string text, string answer, List<string> possibleAnswers, Test test)
     {
         Text = text;
         Answer = answer;
         PossibleAnswers = possibleAnswers;
+        Test = test;
 
         CustomValidator.Validate(this);
 
@@ -49,12 +50,13 @@ public class Question
     {
         try
         {
-            return new Question(text, answer, possibleAnswers);
+            return new Question(text, answer, possibleAnswers, null);
         }
         catch (ValidationException)
         {
             return null;
         }
+        
     }
 
     public static void Modify(Question question)

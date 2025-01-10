@@ -17,6 +17,7 @@ public class Test
 
     public List<StudentTest?> StudentTests { get; set; }
 
+    public Course course { get; set; }
     public static List<Test> _extent { get; } = [];
     private static int _staticId;
 
@@ -39,11 +40,11 @@ public class Test
         ExtentManager.SaveExtent(_extent);
     }
 
-    public static Test? Create(DateTime createdAt, TimeSpan solvingTime, List<Question> questions)
+    public static Test? Create(DateTime createdAt, TimeSpan solvingTime)
     {
         try
         {
-            return new Test(createdAt, solvingTime, questions);
+            return new Test(createdAt, solvingTime, null);
         }
         catch (ValidationException)
         {
@@ -115,4 +116,14 @@ public class Test
         return HashCode.Combine(Id);
     }
 
+    public bool AddCourse(Course item)
+    {
+        if (course == item)
+            return false;
+
+        course = item;
+        item.AddTest(this);
+
+        return true;
+    }
 }
