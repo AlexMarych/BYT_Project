@@ -51,11 +51,11 @@ namespace BYT_Project.Model
             return true;
         }
 
-        public static Student? Create(string name, string surname, string email, DateTime dateOfBirth, int balance)
+        public static Student? Create(string name, string surname, string email, DateTime dateOfBirth)
         {
             try
             {
-                return new Student(name,surname,email,dateOfBirth,DateTime.Now,balance, null);
+                return new Student(name,surname,email,dateOfBirth,DateTime.Now, 0, null);
             }
             catch
             {
