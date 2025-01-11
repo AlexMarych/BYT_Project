@@ -55,7 +55,10 @@ namespace BYT_Project.Model
         public static void ChangeState(Student student, Type type, int salary, string expirience, string? specialization) 
         {
             var method = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-            var result = method.Invoke(null,  parameters: [salary, expirience, DateTime.Now ,student.Name, student.Surname, student.Email, student.DateOfBirth, specialization]);
+            if (type == typeof(Mentor))
+                 method.Invoke(null,  parameters: [salary, expirience, DateTime.Now ,student.Name, student.Surname, student.Email, student.DateOfBirth, specialization]);
+            else if (type == typeof(Support))
+                method.Invoke(null, parameters: [salary, expirience, DateTime.Now, student.Name, student.Surname, student.Email, student.DateOfBirth]);
             Student.Delete(student);
         }
 
