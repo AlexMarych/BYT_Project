@@ -21,7 +21,7 @@ namespace BYT_Project.Model
 
         public Support(int salary, string experience, DateTime dateOfEmployment, string name, string surname, string email, DateTime dateOfBirth, DateTime createdAt, List<Petition>? petitions) : base(salary, experience, dateOfEmployment, name, surname, email, dateOfBirth, createdAt)
         {
-            Petitions = petitions;
+            Petitions ??= [];
             SalaryBonus = (int)(Petitions.Count * SALARY_MULTIPLIER * Salary);
             CustomValidator.Validate(this);
 

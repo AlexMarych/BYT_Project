@@ -66,9 +66,9 @@ namespace BYT_Project.Model
         {
             var method = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
             if (type == typeof(Student))
-                method.Invoke(null, parameters: [mentor.Name, mentor.Surname, mentor.Email, mentor.DateOfBirth, DateTime.Now]);
+                method.Invoke(null, parameters: [mentor.Name, mentor.Surname, mentor.Email, mentor.DateOfBirth]);
             else if (type == typeof(Support))
-                method.Invoke(null, parameters: [mentor.Salary, mentor.Experience, mentor.Name, mentor.Surname, mentor.Email, mentor.DateOfBirth, DateTime.Now]);
+                method.Invoke(null, parameters: [mentor.Salary, mentor.Experience, mentor.DateOfEmployment, mentor.Name, mentor.Surname, mentor.Email, mentor.DateOfBirth]);
             Mentor.Delete(mentor);
         }
 
@@ -76,9 +76,9 @@ namespace BYT_Project.Model
         {
             var method = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
             if (type == typeof(Mentor))
-                method.Invoke(null, parameters: [support.Salary, support.Experience, support.Name, support.Surname, support.Email, support.DateOfBirth, DateTime.Now, specialization]);
+                method.Invoke(null, parameters: [support.Salary, support.Experience, support.DateOfEmployment, support.Name, support.Surname, support.Email, support.DateOfBirth, specialization]);
             else if (type == typeof(Student))
-                method.Invoke(null, parameters: [support.Name, support.Surname, support.Email, support.DateOfBirth, DateTime.Now]);
+                method.Invoke(null, parameters: [support.Name, support.Surname, support.Email, support.DateOfBirth]);
             Support.Delete(support);
         }
     }
